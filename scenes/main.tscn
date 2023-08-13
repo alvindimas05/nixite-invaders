@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://cma7w462pgy8a"]
+
+[ext_resource type="Texture2D" uid="uid://uwolk5a0ok0p" path="res://assets/Interplan-7.png" id="1_ftm3x"]
+[ext_resource type="Script" path="res://scripts/Bullet.gd" id="2_cbhrd"]
+[ext_resource type="Texture2D" uid="uid://dsu24uwl08rnn" path="res://assets/Bullet.png" id="3_be514"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="4_tf73r"]
+[ext_resource type="Script" path="res://scripts/PlayerMovement.gd" id="5_dpq6h"]
+[ext_resource type="Texture2D" uid="uid://ds8yt1abqc2a" path="res://assets/Accretion Matrix.png" id="5_xyf31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvws2"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnx8y"]
+size = Vector2(1919, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp5cg"]
+size = Vector2(21, 1132)
+
+[node name="Main" type="Node2D"]
+
+[node name="Bullet" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1076, -43)
+scale = Vector2(4, 4)
+texture = ExtResource("3_be514")
+script = ExtResource("2_cbhrd")
+limitY = -500
+speed = 30
+
+[node name="Player" type="CharacterBody2D" parent="."]
+scale = Vector2(2, 2)
+script = ExtResource("5_dpq6h")
+speed = 400
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+z_index = 2
+z_as_relative = false
+texture_filter = 1
+texture = ExtResource("1_ftm3x")
+script = ExtResource("4_tf73r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_dvws2")
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(0, -400)
+scale = Vector2(2, 2)
+texture = ExtResource("5_xyf31")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Barriers" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Barriers"]
+position = Vector2(-1.5, -552)
+shape = SubResource("RectangleShape2D_hnx8y")
+
+[node name="Bottom" type="CollisionShape2D" parent="Barriers"]
+position = Vector2(-1.5, 556)
+shape = SubResource("RectangleShape2D_hnx8y")
+
+[node name="Left" type="CollisionShape2D" parent="Barriers"]
+position = Vector2(-975.5, 15)
+shape = SubResource("RectangleShape2D_yp5cg")
+
+[node name="Right" type="CollisionShape2D" parent="Barriers"]
+position = Vector2(970, 15)
+shape = SubResource("RectangleShape2D_yp5cg")
