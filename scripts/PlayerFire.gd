@@ -4,11 +4,10 @@ var root: Node2D
 var bullet: Sprite2D
 var player: CharacterBody2D
 
-func _ready():
-	root = get_node('/root/Main')
-	player = get_node('..')
-	bullet = get_node('/root/Main/Bullet')
+const Bullet = preload("res://scripts/Bullet.gd")
 
+func _ready():
+	player = get_node('..')
 	set_timer()
 
 func _process(_delta):
@@ -30,7 +29,4 @@ func fire():
 		fire_timer.stop()
 
 func add_bullet():
-	var dupe = bullet.duplicate()
-	dupe.position = player.position 
-	dupe.can_move= true
-	root.add_child(dupe)
+	Bullet.new(self, player.damage, player.position, true)

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends "res://scripts/PlaneStats.gd"
 
 @export var speed: int
 
