@@ -10,6 +10,7 @@ var root: Node
 func _ready():
 	root = get_parent()
 	enemy = pre_enemy.instantiate()
+	# Add total enemy because ignoring the first enemy
 	for i in total_enemy + 1:
 		spawn_enemy()
 
@@ -24,7 +25,7 @@ var total_spawn = 0
 var left_spawn = 1
 func spawn_enemy():
 	var dupe: CharacterBody2D = enemy.duplicate()
-	# Ignoring first plane
+	# Ignoring first enemy
 	if total_spawn < 1:
 		total_spawn += 1
 		return
