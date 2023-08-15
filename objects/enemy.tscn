@@ -9,7 +9,6 @@
 size = Vector2(120, 80)
 
 [node name="Enemy" type="CharacterBody2D"]
-z_index = 1
 position = Vector2(0, -400)
 script = ExtResource("1_iei06")
 
@@ -20,6 +19,7 @@ script = ExtResource("2_832hh")
 shape = SubResource("RectangleShape2D_aqspw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_plvp6")
 

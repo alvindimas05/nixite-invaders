@@ -17,5 +17,8 @@ func add_bullet(damage: float, position: Vector2, from_player: bool):
 	dupe.can_move = true
 	dupe.from_player = from_player
 	
+	# Prevent bullet to go above plane
+	dupe.z_index = -1
+	
 	root.add_child(dupe)
 	dupe.name = bullet.name
