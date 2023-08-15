@@ -1,6 +1,6 @@
-extends "res://scripts/PlaneStats.gd"
+extends PlaneStats
 
-@export var speed: int
+@export var speed = 400.0
 
 func get_input():
 	var input = Input.get_vector('ui_left', 'ui_right', 'ui_up', 'ui_down')

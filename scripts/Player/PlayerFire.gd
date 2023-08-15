@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node
 
 var root: Node2D
 var bullet: Sprite2D

@@ -7,6 +7,9 @@ func _ready():
 	set_timer()
 
 var timer = Timer.new()
+
+# Add delay for every bullet before shooting
+# Exploit for spamming bullets ignored
 func set_timer():
 	timer.timeout.connect(add_bullet)
 	timer.wait_time = bullet_delay
