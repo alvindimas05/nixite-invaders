@@ -21,14 +21,10 @@ func is_odd() -> bool:
 # DON'T TOUCH
 # I HAVE NO IDEA HOW IS THIS WORKS
 # <DONT TOUCH START>
-var total_spawn = 0
+var total_spawn = 1
 var left_spawn = 1
 func spawn_enemy():
 	var dupe: CharacterBody2D = enemy.duplicate()
-	# Ignoring first enemy
-	if total_spawn < 1:
-		total_spawn += 1
-		return
 
 	# THIS IS THE PART WHERE I DONT UNDERSTAND
 	dupe.position.x += plane_spacing * (total_spawn - left_spawn)
