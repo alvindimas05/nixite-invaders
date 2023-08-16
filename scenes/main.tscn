@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cma7w462pgy8a"]
+[gd_scene load_steps=11 format=3 uid="uid://cma7w462pgy8a"]
 
 [ext_resource type="Texture2D" uid="uid://uwolk5a0ok0p" path="res://assets/Interplan-7.png" id="1_ftm3x"]
+[ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
 [ext_resource type="Script" path="res://scripts/Player/Player.gd" id="3_0ix8s"]
 [ext_resource type="Script" path="res://scripts/Bullet/BulletHandler.gd" id="5_11hxs"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyFactory.gd" id="5_tb6ms"]
 [ext_resource type="Script" path="res://scripts/Player/PlayerFire.gd" id="6_quscs"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
+load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvws2"]
 size = Vector2(60, 60)
@@ -16,6 +20,43 @@ size = Vector2(1919, 20)
 size = Vector2(21, 1132)
 
 [node name="Main" type="Node2D"]
+
+[node name="Backgrounds" type="Node" parent="."]
+script = ExtResource("1_n6axb")
+move_speed = 3
+
+[node name="Background1" type="Node2D" parent="Backgrounds"]
+position = Vector2(0, -1080)
+
+[node name="Background1" type="Sprite2D" parent="Backgrounds/Background1"]
+z_index = -100
+texture_filter = 1
+position = Vector2(-564, 0)
+scale = Vector2(4.35, 4.35)
+texture = SubResource("CompressedTexture2D_anq0w")
+
+[node name="Background2" type="Sprite2D" parent="Backgrounds/Background1"]
+z_index = -100
+texture_filter = 1
+position = Vector2(564, 0)
+scale = Vector2(4.35, 4.35)
+texture = SubResource("CompressedTexture2D_anq0w")
+
+[node name="Background2" type="Node2D" parent="Backgrounds"]
+
+[node name="Background1" type="Sprite2D" parent="Backgrounds/Background2"]
+z_index = -100
+texture_filter = 1
+position = Vector2(-564, 0)
+scale = Vector2(4.35, 4.35)
+texture = SubResource("CompressedTexture2D_anq0w")
+
+[node name="Background2" type="Sprite2D" parent="Backgrounds/Background2"]
+z_index = -100
+texture_filter = 1
+position = Vector2(564, 0)
+scale = Vector2(4.35, 4.35)
+texture = SubResource("CompressedTexture2D_anq0w")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 scale = Vector2(2, 2)
