@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://0txkc0gndmkq"]
 
-[ext_resource type="Texture2D" uid="uid://dsu24uwl08rnn" path="res://assets/Bullet.png" id="1_nk114"]
+[ext_resource type="AudioStream" uid="uid://bo5agmqj4xcpb" path="res://sounds/bullet.wav" id="2_qsrmf"]
 [ext_resource type="Script" path="res://scripts/Bullet/BulletMovement.gd" id="2_uhec3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smyra"]
@@ -10,12 +10,14 @@ size = Vector2(4, 6)
 texture_filter = 1
 position = Vector2(-1118, -273)
 scale = Vector2(4, 4)
-texture = ExtResource("1_nk114")
 script = ExtResource("2_uhec3")
-limitY = -500
-speed = 30
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_smyra")
+
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_qsrmf")
+volume_db = -10.0
+autoplay = true

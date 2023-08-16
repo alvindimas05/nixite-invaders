@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cma7w462pgy8a"]
+[gd_scene load_steps=15 format=3 uid="uid://cma7w462pgy8a"]
 
 [ext_resource type="Texture2D" uid="uid://uwolk5a0ok0p" path="res://assets/Interplan-7.png" id="1_ftm3x"]
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
@@ -6,12 +6,35 @@
 [ext_resource type="Script" path="res://scripts/Bullet/BulletHandler.gd" id="5_11hxs"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyFactory.gd" id="5_tb6ms"]
 [ext_resource type="Script" path="res://scripts/Player/PlayerFire.gd" id="6_quscs"]
+[ext_resource type="AudioStream" uid="uid://cqtbexj1rwerg" path="res://musics/main.wav" id="7_xydt5"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvws2"]
 size = Vector2(60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvsd7"]
+atlas = ExtResource("1_ftm3x")
+region = Rect2(0, 0, 63, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06snq"]
+atlas = ExtResource("1_ftm3x")
+region = Rect2(63, 0, 63, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oe86u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvsd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06snq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnx8y"]
 size = Vector2(1919, 20)
@@ -62,11 +85,6 @@ texture = SubResource("CompressedTexture2D_anq0w")
 scale = Vector2(2, 2)
 script = ExtResource("3_0ix8s")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-z_as_relative = false
-texture_filter = 1
-texture = ExtResource("1_ftm3x")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_dvws2")
 
@@ -78,6 +96,13 @@ shape = SubResource("RectangleShape2D_dvws2")
 
 [node name="PlayerFire" type="Node" parent="Player"]
 script = ExtResource("6_quscs")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Player"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_oe86u")
+autoplay = "default"
+frame_progress = 0.310873
+speed_scale = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
@@ -103,3 +128,7 @@ shape = SubResource("RectangleShape2D_yp5cg")
 [node name="EnemyFactory" type="Node" parent="."]
 script = ExtResource("5_tb6ms")
 total_enemy = 11
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xydt5")
+autoplay = true

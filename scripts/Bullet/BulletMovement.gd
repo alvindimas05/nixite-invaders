@@ -2,8 +2,8 @@ extends Sprite2D
 
 @export var damage: int
 
-@export var limitY: int
-@export var speed: int
+@export var limitY = -500
+@export var speed = 30
 @export var can_move = false
 @export var from_player: bool
 

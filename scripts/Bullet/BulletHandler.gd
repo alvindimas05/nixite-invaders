@@ -4,7 +4,7 @@ extends Area2D
 @export var effect_opacity = .8
 
 var parent: CharacterBody2D
-var sprite: Sprite2D
+var sprite: Node2D
 var is_player: bool
 func _ready():
 	parent = get_parent()
