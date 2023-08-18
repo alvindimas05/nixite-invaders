@@ -11,6 +11,7 @@ size = Vector2(120, 80)
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(0, -400)
 script = ExtResource("1_iei06")
+damage = 5.0
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("2_832hh")
@@ -25,4 +26,3 @@ texture = ExtResource("3_plvp6")
 
 [node name="EnemyFire" type="Node" parent="."]
 script = ExtResource("4_bysxu")
-bullet_delay = 2.0
