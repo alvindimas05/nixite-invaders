@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cma7w462pgy8a"]
+[gd_scene load_steps=49 format=3 uid="uid://cma7w462pgy8a"]
 
 [ext_resource type="Texture2D" uid="uid://uwolk5a0ok0p" path="res://assets/Interplan-7.png" id="1_ftm3x"]
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
@@ -6,10 +6,13 @@
 [ext_resource type="Script" path="res://scripts/Bullet/BulletHandler.gd" id="5_11hxs"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyFactory.gd" id="5_tb6ms"]
 [ext_resource type="Script" path="res://scripts/Player/PlayerFire.gd" id="6_quscs"]
-[ext_resource type="AudioStream" uid="uid://cqtbexj1rwerg" path="res://musics/main.wav" id="7_xydt5"]
+[ext_resource type="AudioStream" uid="uid://l4qpujwbuc2k" path="res://musics/spaceship.wav" id="7_wno4r"]
 [ext_resource type="Texture2D" uid="uid://bgqsv3q508dw1" path="res://assets/Player Health Status Good.png" id="8_ova6t"]
 [ext_resource type="Texture2D" uid="uid://dvj310q0k0i2c" path="res://assets/Player Health Status Warning.png" id="9_6wm31"]
 [ext_resource type="Texture2D" uid="uid://dp1o7xjej845e" path="res://assets/Player Health Status Critical.png" id="10_oif1q"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://assets/joystick/virtual_joystick.tscn" id="11_3jnrl"]
+[ext_resource type="Texture2D" uid="uid://7fpisd558xuv" path="res://assets/Fire Button.png" id="12_e4hgi"]
+[ext_resource type="Script" path="res://scripts/UI/FireButton.gd" id="13_2wmgb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
@@ -332,13 +335,13 @@ script = ExtResource("5_tb6ms")
 total_enemy = 11
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_xydt5")
-autoplay = true
+stream = ExtResource("7_wno4r")
+volume_db = -1.0
 
 [node name="UserInterface" type="Node" parent="."]
 
 [node name="PlayerHealthStatus" type="Node2D" parent="UserInterface"]
-position = Vector2(-803, 319)
+position = Vector2(-805, 321)
 
 [node name="Good" type="AnimatedSprite2D" parent="UserInterface/PlayerHealthStatus"]
 texture_filter = 1
@@ -362,3 +365,22 @@ scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_2rxiw")
 autoplay = "default"
 frame_progress = 0.217309
+
+[node name="Virtual Joystick" parent="UserInterface" instance=ExtResource("11_3jnrl")]
+offset_left = -964.0
+offset_top = -960.0
+offset_right = -664.0
+offset_bottom = -660.0
+scale = Vector2(1.5, 1.5)
+visibility_mode = 1
+
+[node name="FireButton" type="Button" parent="UserInterface"]
+texture_filter = 1
+offset_left = 652.0
+offset_top = 246.0
+offset_right = 692.0
+offset_bottom = 286.0
+scale = Vector2(5, 5)
+focus_mode = 0
+icon = ExtResource("12_e4hgi")
+script = ExtResource("13_2wmgb")
