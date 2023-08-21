@@ -3,8 +3,11 @@ extends Button
 func _ready():
 	if not DisplayServer.is_touchscreen_available():
 		hide()
-	button_down.connect(_on_button_down)
-	button_up.connect(_on_button_up)
+
+func _gui_input(event):
+	if event is InputEventScreenTouch:
+		if event.is_pressed(): _on_button_down()
+		elif event.is_released(): _on_button_up()
 
 func _on_button_down():
 	Input.action_press("fire")

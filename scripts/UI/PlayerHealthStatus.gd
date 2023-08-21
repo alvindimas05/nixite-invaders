@@ -1,15 +1,14 @@
-extends Node2D
+extends Control
 
-var min_y = -645
-var max_y = -325
+var pos_y = -110
 
 func _ready():
-	if not is_mobile():
-		hide()
+	if is_mobile():
+		move_to_top()
 
 func is_mobile() -> bool:
 	return DisplayServer.is_touchscreen_available()
 
 func move_to_top():
-	position.x = 0
-	position.y = min_y
+	anchors_preset = PRESET_CENTER_TOP
+	position.y = pos_y

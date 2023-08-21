@@ -10,7 +10,6 @@ var bg2_move: BackgroundMove
 
 var limit: float
 
-
 # Moving background to bottom
 func _ready():
 	bg1 = get_node("Background1")
