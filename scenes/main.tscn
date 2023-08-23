@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cma7w462pgy8a"]
+[gd_scene load_steps=62 format=3 uid="uid://cma7w462pgy8a"]
 
 [ext_resource type="Texture2D" uid="uid://uwolk5a0ok0p" path="res://assets/Interplan-7.png" id="1_ftm3x"]
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bgqsv3q508dw1" path="res://assets/Player Health Status Good.png" id="8_ova6t"]
 [ext_resource type="Texture2D" uid="uid://dvj310q0k0i2c" path="res://assets/Player Health Status Warning.png" id="9_6wm31"]
 [ext_resource type="Texture2D" uid="uid://dp1o7xjej845e" path="res://assets/Player Health Status Critical.png" id="10_oif1q"]
-[ext_resource type="Texture2D" uid="uid://7fpisd558xuv" path="res://assets/Fire Button.png" id="12_e4hgi"]
 [ext_resource type="Script" path="res://scripts/UI/FireButton.gd" id="13_2wmgb"]
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="14_v6ld0"]
+[ext_resource type="Texture2D" uid="uid://do75n2xoiiuh3" path="res://assets/Joystick.png" id="14_1cu7j"]
+[ext_resource type="Script" path="res://scripts/UI/ArrowController.gd" id="15_a1k1i"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
@@ -249,6 +249,29 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qix8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nds0d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k01nn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ii8yu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qbx76"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ttflr"]
+load_path = "res://.godot/imported/Fire Button.png-47a7c8f1104eb96a02f7c019c0d6f115.ctex"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wva7m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kra1c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4glm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhk13"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8h6bi"]
+
 [node name="Main" type="Node2D"]
 
 [node name="Backgrounds" type="Node" parent="."]
@@ -380,14 +403,6 @@ sprite_frames = SubResource("SpriteFrames_2rxiw")
 autoplay = "default"
 frame_progress = 0.217309
 
-[node name="Virtual Joystick" parent="UserInterface" instance=ExtResource("14_v6ld0")]
-offset_left = 15.0
-offset_top = -544.0
-offset_right = 315.0
-offset_bottom = -244.0
-scale = Vector2(2, 2)
-visibility_mode = 1
-
 [node name="FireButton" type="Button" parent="UserInterface"]
 texture_filter = 1
 anchors_preset = 3
@@ -395,13 +410,37 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -458.0
-offset_top = -396.0
-offset_right = -418.0
-offset_bottom = -356.0
+offset_left = -466.0
+offset_top = -404.0
+offset_right = -434.0
+offset_bottom = -372.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(7, 7)
 focus_mode = 0
-icon = ExtResource("12_e4hgi")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qix8l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nds0d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k01nn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ii8yu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qbx76")
+icon = SubResource("CompressedTexture2D_ttflr")
 script = ExtResource("13_2wmgb")
+
+[node name="ArrowController" type="Button" parent="UserInterface"]
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 227.0
+offset_top = -473.0
+offset_right = 291.0
+offset_bottom = -409.0
+grow_vertical = 0
+scale = Vector2(5, 5)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wva7m")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kra1c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_e4glm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mhk13")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6bi")
+icon = ExtResource("14_1cu7j")
+script = ExtResource("15_a1k1i")
