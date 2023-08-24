@@ -23,10 +23,9 @@ func on_change_health_points(hp: float, max_hp: float):
 	var percentage_hp = hp / max_hp
 	if percentage_hp > warning_percentage:
 		change_status(Status.GOOD)
-	elif percentage_hp <=  warning_percentage:
+	elif percentage_hp > critical_percentage:
 		change_status(Status.WARNING)
-	elif percentage_hp <= critical_percentage:
-		change_status(Status.CRITICAL)
+	else: change_status(Status.CRITICAL)
 
 func change_status(status: int):
 	hide_all()

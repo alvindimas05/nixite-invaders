@@ -21,3 +21,4 @@ shape = SubResource("RectangleShape2D_smyra")
 position = Vector2(-0.5, -0.5)
 stream = ExtResource("2_qsrmf")
 volume_db = -10.0
+autoplay = true

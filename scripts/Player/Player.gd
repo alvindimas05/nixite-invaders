@@ -10,7 +10,7 @@ func _ready():
 # Get Input for velocity movement
 func get_input():
 	var input = Input.get_vector('ui_left', 'ui_right', 'ui_up', 'ui_down')
-	velocity = input * move_speed
+	velocity = input * move_speed * 1.1
 
 func _physics_process(_delta):
 	get_input()

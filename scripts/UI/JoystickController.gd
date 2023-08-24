@@ -4,17 +4,20 @@ var player: PlaneStats
 var tip: TextureRect
 var tip_pos: Vector2
 
-# Minimum limit tip (if joystick 64 and tip 32 then -4)
-var min: float
-# Maximum limit tip (if joystick 64 and tip 32 then 40)	
-var max: float
+# Limit tip based on joystick size
+var limit: float
+var center: Vector2
 func _ready():
+	disable_if_not_mobile()
 	player = get_node("/root/Main/Player")
 	tip = get_child(0)
 	tip_pos = tip.position
 	
-	min = (0 - (tip.size.x / 4))
-	max = (size.x + (tip.size.x / 2)) / 2
+	limit = (size.x / 2) - (tip.size.x / 4)
+	center = size / 4
+func disable_if_not_mobile():
+	if not DisplayServer.is_touchscreen_available():
+		hide()
 
 var velo = Vector2(0, 0)
 func _gui_input(event):
@@ -34,19 +37,15 @@ func _gui_input(event):
 	move_tip(normalized + (tip.size / 2))
 
 func move_tip(norm: Vector2):
-	# Checking if limit then put position to limit
-	if norm.x < min: norm.x = min
-	elif norm.x > max: norm.x = max
-	
-	# Checking if limit then put position to limit	
-	if norm.y < min: norm.y = min
-	elif norm.y > max: norm.y = max
-	
+	var distance = (norm - center).length()
+	# Limit the vector if distance more than limit
+	if distance > limit:
+		norm = center + (norm - center).normalized() * limit
 	tip.position = norm
 
 # Move based on velocity
 func _process(delta):
-	player.velocity = velo
+	player.velocity = velo * 1.1
 	player.move_and_slide()
 
 func normalized_vector(eposi: Vector2) -> Vector2:
