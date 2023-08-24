@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cma7w462pgy8a"]
+[gd_scene load_steps=63 format=3 uid="uid://cma7w462pgy8a"]
 
 [ext_resource type="Texture2D" uid="uid://uwolk5a0ok0p" path="res://assets/Interplan-7.png" id="1_ftm3x"]
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://dvj310q0k0i2c" path="res://assets/Player Health Status Warning.png" id="9_6wm31"]
 [ext_resource type="Texture2D" uid="uid://dp1o7xjej845e" path="res://assets/Player Health Status Critical.png" id="10_oif1q"]
 [ext_resource type="Script" path="res://scripts/UI/FireButton.gd" id="13_2wmgb"]
+[ext_resource type="Texture2D" uid="uid://calgmka26axy8" path="res://assets/Fire Button.png" id="13_vhax4"]
 [ext_resource type="Texture2D" uid="uid://do75n2xoiiuh3" path="res://assets/Joystick.png" id="14_1cu7j"]
-[ext_resource type="Script" path="res://scripts/UI/ArrowController.gd" id="15_a1k1i"]
+[ext_resource type="Script" path="res://scripts/UI/JoystickController.gd" id="15_23py8"]
+[ext_resource type="Texture2D" uid="uid://bvj8o1ticdkef" path="res://assets/Joystick Tip.png" id="16_1y4jq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
@@ -259,9 +261,6 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qbx76"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ttflr"]
-load_path = "res://.godot/imported/Fire Button.png-47a7c8f1104eb96a02f7c019c0d6f115.ctex"
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wva7m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kra1c"]
@@ -355,13 +354,14 @@ shape = SubResource("RectangleShape2D_yp5cg")
 position = Vector2(970, 15)
 shape = SubResource("RectangleShape2D_yp5cg")
 
-[node name="EnemyFactory" type="Node" parent="."]
-script = ExtResource("5_tb6ms")
-total_enemy = 11
-
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_wno4r")
 volume_db = -1.0
+autoplay = true
+
+[node name="EnemyFactory" type="Node" parent="."]
+script = ExtResource("5_tb6ms")
+total_enemy = 11
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 offset = Vector2(-960, -540)
@@ -423,10 +423,10 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_nds0d")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_k01nn")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ii8yu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qbx76")
-icon = SubResource("CompressedTexture2D_ttflr")
+icon = ExtResource("13_vhax4")
 script = ExtResource("13_2wmgb")
 
-[node name="ArrowController" type="Button" parent="UserInterface"]
+[node name="Joystick" type="Button" parent="UserInterface"]
 texture_filter = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -443,4 +443,12 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_e4glm")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_mhk13")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6bi")
 icon = ExtResource("14_1cu7j")
-script = ExtResource("15_a1k1i")
+script = ExtResource("15_23py8")
+
+[node name="Tip" type="TextureRect" parent="UserInterface/Joystick"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("16_1y4jq")
