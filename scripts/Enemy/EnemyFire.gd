@@ -24,4 +24,6 @@ func set_timer():
 # Random delay before timer started
 
 func add_bullet():
-	Bullet.new(self, enemy.damage, enemy.position, false)
+	var bullet = Bullet.new(self)
+	bullet.target_position = Vector2(enemy.position.x, 1000)
+	bullet.add_bullet(enemy.damage, enemy.position, false)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Enemy/Enemy.gd" id="1_iei06"]
 [ext_resource type="Script" path="res://scripts/Bullet/BulletHandler.gd" id="2_832hh"]
-[ext_resource type="Texture2D" uid="uid://ds8yt1abqc2a" path="res://assets/Accretion Matrix.png" id="3_plvp6"]
+[ext_resource type="Texture2D" uid="uid://ds8yt1abqc2a" path="res://assets/Planes/Accretion Matrix.png" id="3_plvp6"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyFire.gd" id="4_bysxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqspw"]

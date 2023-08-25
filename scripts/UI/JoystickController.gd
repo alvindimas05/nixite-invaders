@@ -15,9 +15,10 @@ func _ready():
 	
 	limit = (size.x / 2) - (tip.size.x / 4)
 	center = size / 4
+	
 func disable_if_not_mobile():
-	if not DisplayServer.is_touchscreen_available():
-		hide()
+	if DisplayServer.is_touchscreen_available(): show()
+	else: hide()
 
 var velo = Vector2(0, 0)
 func _gui_input(event):

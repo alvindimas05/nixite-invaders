@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgqsv3q508dw1"
-path="res://.godot/imported/Player Health Status Good.png-44257e7dc8899456b991f626bf07b779.ctex"
+uid="uid://bvj8o1ticdkef"
+path="res://.godot/imported/Joystick Tip.png-e8f30e61d4dea5593bd2eb3a01ef5a84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player Health Status Good.png"
-dest_files=["res://.godot/imported/Player Health Status Good.png-44257e7dc8899456b991f626bf07b779.ctex"]
+source_file="res://assets/Joystick/Joystick Tip.png"
+dest_files=["res://.godot/imported/Joystick Tip.png-e8f30e61d4dea5593bd2eb3a01ef5a84.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
 extends Button
 
 func _ready():
-	if not DisplayServer.is_touchscreen_available():
-		hide()
+	if DisplayServer.is_touchscreen_available():show()
+	else: hide()
 
 func _gui_input(event):
 	if event is InputEventScreenTouch:

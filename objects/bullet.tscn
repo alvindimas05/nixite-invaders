@@ -6,9 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smyra"]
 size = Vector2(4, 6)
 
-[node name="Bullet" type="Sprite2D"]
+[node name="Bullet" type="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(-1118, -273)
 scale = Vector2(4, 4)
 script = ExtResource("2_uhec3")
 
@@ -22,3 +21,6 @@ position = Vector2(-0.5, -0.5)
 stream = ExtResource("2_qsrmf")
 volume_db = -10.0
 autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1

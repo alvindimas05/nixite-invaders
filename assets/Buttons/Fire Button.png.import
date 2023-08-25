@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds8yt1abqc2a"
-path="res://.godot/imported/Accretion Matrix.png-bea675898658a5fafc3af101eb7f6fbd.ctex"
+uid="uid://calgmka26axy8"
+path="res://.godot/imported/Fire Button.png-27aa72bafa3bd97e8f3b6e081e7573cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Accretion Matrix.png"
-dest_files=["res://.godot/imported/Accretion Matrix.png-bea675898658a5fafc3af101eb7f6fbd.ctex"]
+source_file="res://assets/Buttons/Fire Button.png"
+dest_files=["res://.godot/imported/Fire Button.png-27aa72bafa3bd97e8f3b6e081e7573cf.ctex"]
 
 [params]
 

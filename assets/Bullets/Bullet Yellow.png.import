@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp1o7xjej845e"
-path="res://.godot/imported/Player Health Status Critical.png-4c74d8d3d1a3748e0a154dcb23060208.ctex"
+uid="uid://bcfjf6f761dls"
+path="res://.godot/imported/Bullet Yellow.png-5180c45db14ee528ad81c8d95f15be01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player Health Status Critical.png"
-dest_files=["res://.godot/imported/Player Health Status Critical.png-4c74d8d3d1a3748e0a154dcb23060208.ctex"]
+source_file="res://assets/Bullets/Bullet Yellow.png"
+dest_files=["res://.godot/imported/Bullet Yellow.png-5180c45db14ee528ad81c8d95f15be01.ctex"]
 
 [params]
 

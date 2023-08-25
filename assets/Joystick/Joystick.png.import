@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uwolk5a0ok0p"
-path="res://.godot/imported/Interplan-7.png-a4717c58d915e45b6f8a3686119331ad.ctex"
+uid="uid://do75n2xoiiuh3"
+path="res://.godot/imported/Joystick.png-1d7aa46f3c52912a38127b9d23f2208f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Interplan-7.png"
-dest_files=["res://.godot/imported/Interplan-7.png-a4717c58d915e45b6f8a3686119331ad.ctex"]
+source_file="res://assets/Joystick/Joystick.png"
+dest_files=["res://.godot/imported/Joystick.png-1d7aa46f3c52912a38127b9d23f2208f.ctex"]
 
 [params]
 

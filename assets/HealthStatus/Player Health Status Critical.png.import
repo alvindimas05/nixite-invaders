@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://calgmka26axy8"
-path="res://.godot/imported/Fire Button.png-47a7c8f1104eb96a02f7c019c0d6f115.ctex"
+uid="uid://dp1o7xjej845e"
+path="res://.godot/imported/Player Health Status Critical.png-9d65a09a016ff27f5f9f13dfc0cb6fcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fire Button.png"
-dest_files=["res://.godot/imported/Fire Button.png-47a7c8f1104eb96a02f7c019c0d6f115.ctex"]
+source_file="res://assets/HealthStatus/Player Health Status Critical.png"
+dest_files=["res://.godot/imported/Player Health Status Critical.png-9d65a09a016ff27f5f9f13dfc0cb6fcc.ctex"]
 
 [params]
 

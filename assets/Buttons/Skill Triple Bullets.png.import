@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvj8o1ticdkef"
-path="res://.godot/imported/Joystick Tip.png-978eae7565c75b85d95eecae8d08f4af.ctex"
+uid="uid://oxo33tikwvpx"
+path="res://.godot/imported/Skill Triple Bullets.png-387363f89cbbb833891e269b8d23c292.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Joystick Tip.png"
-dest_files=["res://.godot/imported/Joystick Tip.png-978eae7565c75b85d95eecae8d08f4af.ctex"]
+source_file="res://assets/Buttons/Skill Triple Bullets.png"
+dest_files=["res://.godot/imported/Skill Triple Bullets.png-387363f89cbbb833891e269b8d23c292.ctex"]
 
 [params]
 

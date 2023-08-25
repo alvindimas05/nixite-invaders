@@ -6,6 +6,15 @@ var status_controller: PlayerHealthStatusController
 func _ready():
 	status_controller = PlayerHealthStatusController.new(self)
 	on_health_points_change.connect(status_controller.on_change_health_points)
+	set_skills()
+
+var skill_1: SkillTripleBullets
+func _process(delta):
+	if !Input.is_key_pressed(KEY_Q): return
+	skill_1.run_skill()
+
+func set_skills():
+	skill_1 = SkillTripleBullets.new(self)
 
 # Get Input for velocity movement
 func get_input():

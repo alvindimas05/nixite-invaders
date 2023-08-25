@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daycg47pb3gow"
-path="res://.godot/imported/Bullet Blue.png-1702392de14797ffe1481c0b5db20ef4.ctex"
+uid="uid://bgqsv3q508dw1"
+path="res://.godot/imported/Player Health Status Good.png-90777120dafb4b5fbf952592b502fa75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bullet Blue.png"
-dest_files=["res://.godot/imported/Bullet Blue.png-1702392de14797ffe1481c0b5db20ef4.ctex"]
+source_file="res://assets/HealthStatus/Player Health Status Good.png"
+dest_files=["res://.godot/imported/Player Health Status Good.png-90777120dafb4b5fbf952592b502fa75.ctex"]
 
 [params]
 

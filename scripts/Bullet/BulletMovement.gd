@@ -1,25 +1,20 @@
-extends Sprite2D
+extends CharacterBody2D
 
 @export var damage: int
 
-@export var limitY = -500
-@export var speed = 30
+@export var speed = 1500
 @export var can_move = false
 @export var from_player: bool
+@export var target_position: Vector2
 
-func _process(_delta):
-	# Prevent original bullet to move
-	if !can_move: return
+func _physics_process(delta):
+	# Calculate the direction vector towards the target position
+	var direction = (target_position - position).normalized()
 	
-	# If from enemy and limit is minus, change the limit into plus
-	if !from_player && limitY < 0:
-		limitY = -limitY
+	# Calculate the distance to the target position
+	var distance = position.distance_to(target_position)
+	move_and_collide(direction * speed * delta)
 	
-	# If enemy and bullet position more than minus limit
-	# OR
-	# If player and bullet position more than plus limit
-	if (from_player && position.y < limitY) or (!from_player && position.y > limitY):
-		queue_free()
-	
-	# If player then move to top else move to bottom
-	position.y -= speed * (1 if from_player else -1)
+	# Check if the object has reached or passed the target position
+	if distance <= speed * delta:
+		queue_free()  # Destroy the object

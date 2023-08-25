@@ -27,6 +27,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="nixite-invaders"
 
+[gui]
+
+theme/custom_font="res://fonts/Pixeltype.ttf"
+
 [input]
 
 ui_left={
