@@ -15,6 +15,7 @@ func _process(delta):
 
 func set_skills():
 	skill_1 = SkillTripleBullets.new(self)
+	skill_1.set_key_label("Q")
 
 # Get Input for velocity movement
 func get_input():

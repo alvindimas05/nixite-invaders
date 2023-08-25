@@ -1,9 +1,11 @@
-[gd_scene load_steps=64 format=3 uid="uid://cma7w462pgy8a"]
+[gd_scene load_steps=66 format=3 uid="uid://cma7w462pgy8a"]
 
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
 [ext_resource type="Script" path="res://scripts/Player/Player.gd" id="3_0ix8s"]
+[ext_resource type="Texture2D" uid="uid://yati64um0uau" path="res://assets/Lasers/Long Laser.png" id="3_d7sqg"]
+[ext_resource type="Script" path="res://scripts/Plane/DamageHandler.gd" id="4_jdrqb"]
+[ext_resource type="Script" path="res://scripts/Skills/LongLaser/LongLaser.gd" id="4_vyhm7"]
 [ext_resource type="Texture2D" uid="uid://uwolk5a0ok0p" path="res://assets/Planes/Interplan-7.png" id="5_8bfg0"]
-[ext_resource type="Script" path="res://scripts/Bullet/BulletHandler.gd" id="5_11hxs"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyFactory.gd" id="5_tb6ms"]
 [ext_resource type="Script" path="res://scripts/Player/PlayerFire.gd" id="6_quscs"]
 [ext_resource type="AudioStream" uid="uid://l4qpujwbuc2k" path="res://musics/spaceship.wav" id="7_wno4r"]
@@ -17,10 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://do75n2xoiiuh3" path="res://assets/Joystick/Joystick.png" id="14_r4afy"]
 [ext_resource type="Script" path="res://scripts/UI/JoystickController.gd" id="15_23py8"]
 [ext_resource type="Texture2D" uid="uid://bvj8o1ticdkef" path="res://assets/Joystick/Joystick Tip.png" id="16_i2dmm"]
-[ext_resource type="Texture2D" uid="uid://oxo33tikwvpx" path="res://assets/Buttons/Skill Triple Bullets.png" id="18_axlhx"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqb41"]
+size = Vector2(4, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvws2"]
 size = Vector2(60, 60)
@@ -311,17 +315,33 @@ scale = Vector2(4.35, 4.35)
 texture = SubResource("CompressedTexture2D_anq0w")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+z_index = 7
+z_as_relative = false
 position = Vector2(0, 450)
 scale = Vector2(2, 2)
 script = ExtResource("3_0ix8s")
 
+[node name="Laser" type="Sprite2D" parent="Player"]
+visible = false
+z_index = 6
+z_as_relative = false
+position = Vector2(0, -30)
+texture = ExtResource("3_d7sqg")
+script = ExtResource("4_vyhm7")
+scale_speed = 25.0
+
+[node name="Area2D" type="Area2D" parent="Player/Laser"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Laser/Area2D"]
+shape = SubResource("RectangleShape2D_nqb41")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_dvws2")
 
-[node name="Area2D" type="Area2D" parent="Player"]
-script = ExtResource("5_11hxs")
+[node name="DamageHandler" type="Area2D" parent="Player"]
+script = ExtResource("4_jdrqb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/DamageHandler"]
 shape = SubResource("RectangleShape2D_dvws2")
 
 [node name="PlayerFire" type="Node" parent="Player"]
@@ -483,7 +503,6 @@ offset_top = -85.0
 offset_right = -45.0
 offset_bottom = -45.0
 scale = Vector2(3, 3)
-texture = ExtResource("18_axlhx")
 
 [node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 1"]
 layout_mode = 1
@@ -496,4 +515,3 @@ offset_right = -80.0
 offset_bottom = -17.0
 grow_horizontal = 0
 theme_override_font_sizes/normal_font_size = 50
-text = "Q"

@@ -10,11 +10,11 @@ func _ready():
 	parent = get_parent()
 	sprite = parent.get_node("Sprite2D")
 	is_player = parent.name == "Player"
-	area_entered.connect(_area_entered)
 
 # Send damage to parent (Character)
 func send_damage(damage: int):
 	parent.health_points -= damage
+	effect()
 	check_for_destroy()
 
 # Destroy parent if hp below or equals to 0
@@ -23,16 +23,6 @@ func check_for_destroy():
 	parent.queue_free()
 	if is_player:
 		get_tree().quit()
-
-# Check if a bullet hit or entering character area
-func _area_entered(area: Area2D):
-	var bullet = area.get_parent()
-	# Checking if a bullet or the character is the enemy of character
-	if !bullet.name.contains("Bullet") or bullet.from_player == is_player: return
-
-	send_damage(bullet.damage)
-	bullet.queue_free()
-	effect()
 
 # Effect when hit by bullet
 var timer = Timer.new()

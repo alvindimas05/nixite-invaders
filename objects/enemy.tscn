@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://drfk0vwe0hv44"]
 
 [ext_resource type="Script" path="res://scripts/Enemy/Enemy.gd" id="1_iei06"]
-[ext_resource type="Script" path="res://scripts/Bullet/BulletHandler.gd" id="2_832hh"]
+[ext_resource type="Script" path="res://scripts/Plane/DamageHandler.gd" id="2_r6ppt"]
 [ext_resource type="Texture2D" uid="uid://ds8yt1abqc2a" path="res://assets/Planes/Accretion Matrix.png" id="3_plvp6"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyFire.gd" id="4_bysxu"]
 
@@ -9,14 +9,16 @@
 size = Vector2(120, 80)
 
 [node name="Enemy" type="CharacterBody2D"]
+z_index = 5
+z_as_relative = false
 position = Vector2(0, -400)
 script = ExtResource("1_iei06")
 damage = 5.0
 
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("2_832hh")
+[node name="DamageHandler" type="Area2D" parent="."]
+script = ExtResource("2_r6ppt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHandler"]
 shape = SubResource("RectangleShape2D_aqspw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

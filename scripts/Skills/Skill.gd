@@ -11,7 +11,7 @@ var player: PlaneStats
 var can_skill = true
 var skills: Control
 
-var rect: Control
+var skill_control: Control
 var skill_texture: CompressedTexture2D
 
 func _init(plr: PlaneStats):
@@ -22,6 +22,8 @@ func _init(plr: PlaneStats):
 func set_requirements():
 	set_timer_cooldown()
 	set_timer_duration()
+	
+	get_skill_position()
 	set_texture()
 
 func run_skill():
@@ -31,18 +33,29 @@ func run_skill():
 	timer_cd.start()
 	timer_duration.start()
 	# Reduce opacity skill button
-	rect.modulate.a = .2
+	skill_control.modulate.a = .2
 	emit_signal("on_skill")
+	
+# Get empty skill to put and check if can be put
+func get_skill_position():
+	for i in skills.get_child_count():
+		var con: Control = skills.get_child(i)
+		var txr: TextureRect = con.get_node("TextureRect")
+		var lbl: RichTextLabel = con.get_node("TextLabel")
+		
+		if txr.texture == null and lbl.text == "":
+			skill_control = con
+			return
+	assert(false, "ERROR: Can't add skill texture or key label on class " + get_class())
 
 # Set Texture for indicator, error if no texture rect that can added
 func set_texture():
-	for i in skills.get_child_count():
-		var c: TextureRect = skills.get_child(i).get_node("TextureRect")
-		if c == null: continue
-		c.texture = skill_texture
-		rect = skills.get_child(i)
-		return
-	assert(false, "ERROR: Can't add texture on class " + get_class())
+	var c: TextureRect = skill_control.get_node("TextureRect")
+	c.texture = skill_texture
+
+func set_key_label(key: String):
+	var t: RichTextLabel = skill_control.get_node("TextLabel")
+	t.text = key
 
 # Set timer duration for reuse
 var timer_duration: Timer
@@ -60,7 +73,7 @@ func set_timer_cooldown():
 	timer_cd.one_shot = true
 	timer_cd.wait_time = cooldown
 	timer_cd.timeout.connect(func():
-		rect.modulate.a = 1
+		skill_control.modulate.a = 1
 		emit_signal("after_cooldown")
 	)
 	player.add_child(timer_cd)
