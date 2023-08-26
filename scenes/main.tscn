@@ -322,7 +322,6 @@ scale = Vector2(2, 2)
 script = ExtResource("3_0ix8s")
 
 [node name="Laser" type="Sprite2D" parent="Player"]
-visible = false
 z_index = 6
 z_as_relative = false
 position = Vector2(0, -30)
