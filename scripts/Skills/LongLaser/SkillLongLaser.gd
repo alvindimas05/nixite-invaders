@@ -23,10 +23,10 @@ func set_laser():
 	player.add_child(laser)
 
 # Start skill then start cooldown and skill duration
-func _on_skill(): laser.can_skill = true
+func _on_skill(): laser.activated = true
 
 # Stop skill after duration
-func _after_duration(): laser.can_skill = false
+func _after_duration(): laser.activated = false
 
 # Return opacity and can use skill again after cooldown
 func _after_cooldown(): can_skill = true
