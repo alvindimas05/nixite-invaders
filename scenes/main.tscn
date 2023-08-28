@@ -1,10 +1,8 @@
-[gd_scene load_steps=66 format=3 uid="uid://cma7w462pgy8a"]
+[gd_scene load_steps=63 format=3 uid="uid://cma7w462pgy8a"]
 
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
 [ext_resource type="Script" path="res://scripts/Player/Player.gd" id="3_0ix8s"]
-[ext_resource type="Texture2D" uid="uid://yati64um0uau" path="res://assets/Lasers/Long Laser.png" id="3_d7sqg"]
 [ext_resource type="Script" path="res://scripts/Plane/DamageHandler.gd" id="4_jdrqb"]
-[ext_resource type="Script" path="res://scripts/Skills/LongLaser/LongLaser.gd" id="4_vyhm7"]
 [ext_resource type="Texture2D" uid="uid://uwolk5a0ok0p" path="res://assets/Planes/Interplan-7.png" id="5_8bfg0"]
 [ext_resource type="Script" path="res://scripts/Enemy/EnemyFactory.gd" id="5_tb6ms"]
 [ext_resource type="Script" path="res://scripts/Player/PlayerFire.gd" id="6_quscs"]
@@ -22,9 +20,6 @@
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqb41"]
-size = Vector2(4, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvws2"]
 size = Vector2(60, 60)
@@ -321,19 +316,6 @@ position = Vector2(0, 450)
 scale = Vector2(2, 2)
 script = ExtResource("3_0ix8s")
 
-[node name="Laser" type="Sprite2D" parent="Player"]
-z_index = 6
-z_as_relative = false
-position = Vector2(0, -30)
-texture = ExtResource("3_d7sqg")
-script = ExtResource("4_vyhm7")
-scale_speed = 25.0
-
-[node name="Area2D" type="Area2D" parent="Player/Laser"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Laser/Area2D"]
-shape = SubResource("RectangleShape2D_nqb41")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_dvws2")
 
@@ -380,7 +362,7 @@ volume_db = -1.0
 
 [node name="EnemyFactory" type="Node" parent="."]
 script = ExtResource("5_tb6ms")
-total_enemy = 11
+total_enemy = 10
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 offset = Vector2(-960, -540)
@@ -504,6 +486,34 @@ offset_bottom = -45.0
 scale = Vector2(3, 3)
 
 [node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 1"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = -81.0
+offset_right = -80.0
+offset_bottom = -17.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 50
+
+[node name="Skill 2" type="Control" parent="UserInterface/Skills"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = -150.0
+offset_right = 44.0
+offset_bottom = -110.0
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/Skills/Skill 2"]
+layout_mode = 0
+offset_left = -85.0
+offset_top = -85.0
+offset_right = -45.0
+offset_bottom = -45.0
+scale = Vector2(3, 3)
+
+[node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 2"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

@@ -6,10 +6,13 @@ extends Area2D
 var parent: CharacterBody2D
 var sprite: Node2D
 var is_player: bool
+var root: Node
 func _ready():
+	root = get_node("/root/Main")
 	parent = get_parent()
 	sprite = parent.get_node("Sprite2D")
 	is_player = parent.name == "Player"
+	set_sound_destroy()
 
 # Send damage to parent (Character)
 func send_damage(damage: int):
@@ -21,8 +24,13 @@ func send_damage(damage: int):
 func check_for_destroy():
 	if parent.health_points > 0: return
 	parent.queue_free()
-	if is_player:
-		get_tree().quit()
+	sound_destroy.play()
+
+var sfx = preload("res://sounds/plane_destroyed.mp3")
+var sound_destroy = AudioStreamPlayer2D.new()
+func set_sound_destroy():
+	sound_destroy.stream = sfx
+	root.add_child(sound_destroy)
 
 # Effect when hit by bullet
 var timer = Timer.new()

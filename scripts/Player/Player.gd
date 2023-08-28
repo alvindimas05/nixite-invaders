@@ -9,13 +9,16 @@ func _ready():
 	set_skills()
 
 var skill_1: SkillTripleBullets
+var skill_2: SkillLongLaser
 func _process(delta):
-	if !Input.is_key_pressed(KEY_Q): return
-	skill_1.run_skill()
+	if Input.is_key_pressed(KEY_J): skill_1.run_skill()
+	if Input.is_key_pressed(KEY_K): skill_2.run_skill()
 
 func set_skills():
 	skill_1 = SkillTripleBullets.new(self)
-	skill_1.set_key_label("Q")
+	skill_1.set_key_label("J")
+	skill_2 = SkillLongLaser.new(self)
+	skill_2.set_key_label("K")
 
 # Get Input for velocity movement
 func get_input():
