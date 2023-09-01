@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://l5qja647bjmm"]
+[gd_scene load_steps=5 format=3 uid="uid://l5qja647bjmm"]
 
 [ext_resource type="Texture2D" uid="uid://yati64um0uau" path="res://assets/Lasers/Long Laser.png" id="1_rw4qf"]
 [ext_resource type="Script" path="res://scripts/Skills/LongLaser/LongLaser.gd" id="2_dyyef"]
+[ext_resource type="AudioStream" uid="uid://cilrk2a703abt" path="res://sounds/long_laser.wav" id="3_yb1wr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqb41"]
 size = Vector2(4, 6)
@@ -11,11 +12,17 @@ z_index = 6
 z_as_relative = false
 texture_filter = 1
 position = Vector2(0, -30)
+scale = Vector2(1, 1e-05)
 texture = ExtResource("1_rw4qf")
 script = ExtResource("2_dyyef")
+damage = 5
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(1, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_nqb41")
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yb1wr")
+volume_db = -10.0

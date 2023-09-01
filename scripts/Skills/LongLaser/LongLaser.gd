@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var scale_speed: float = 25
+@export var scale_speed: float = 20
 @export var max_scale: float = 800
 @export var activated = false
 @export var delay = .5
@@ -8,9 +8,14 @@ extends Sprite2D
 @export var is_player = true
 
 var default_y: float
+var sfx: AudioStreamPlayer
 func _ready():
 	default_y = position.y
+	sfx = get_node("SoundEffect")
 	set_laser()
+
+func play_sfx():
+	sfx.play(.2)
 
 # Set the Laser
 func set_laser():
@@ -18,21 +23,25 @@ func set_laser():
 	area.area_entered.connect(_area_entered)
 	area.area_exited.connect(_area_exited)
 	set_timer_damage()
-	
+
+func _on_activated():
+	show()
+	timer_damage.start()
+	scale.y += scale_speed
+
+func _on_deactivated():
+	timer_damage.stop()
+	scale.y = 0
+	hide()
+
 func _process(delta):
 	# Show and increase height if activated and height below max height
-	if activated && scale.y <= max_scale:
-		show()
-		timer_damage.start()
-		scale.y += scale_speed
+	if activated && scale.y < 1: _on_activated()
+	elif activated && scale.y <= max_scale: scale.y += scale_speed
 	# Decrease if deactivated and scale above -1
-	elif !activated && scale.y > -1:
-		scale.y -= scale_speed
+	elif !activated && scale.y > -1: scale.y -= scale_speed
 	# If height below 1 then stop timer and hide
-	elif scale.y < 1:
-		timer_damage.stop()
-		scale.y = 0
-		hide()
+	elif scale.y < 1: _on_deactivated()
 	position.y = -abs(default_y + (texture.get_height() * scale.y / 2))
 
 # Set timer for repeated damage

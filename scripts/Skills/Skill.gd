@@ -5,7 +5,7 @@ signal after_cooldown
 signal on_skill
 
 @export var cooldown: float = 10
-@export var duration: float = 3
+@export var _duration: float = 3
 
 var player: PlaneStats
 var can_skill = true
@@ -62,7 +62,7 @@ var timer_duration: Timer
 func set_timer_duration():
 	timer_duration = Timer.new()
 	timer_cd.one_shot = true
-	timer_duration.wait_time = duration
+	timer_duration.wait_time = _duration
 	timer_duration.timeout.connect(func(): emit_signal("after_duration"))
 	player.add_child(timer_duration)
 	
