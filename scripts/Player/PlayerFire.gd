@@ -4,7 +4,9 @@ var root: Node2D
 var bullet: Sprite2D
 var player: CharacterBody2D
 
+signal on_hit
 signal custom_skill
+
 func _ready():
 	player = get_parent()
 	set_timer()
@@ -37,4 +39,5 @@ func fire():
 func add_bullet(target_pos: Vector2 = Vector2(player.position.x, -1000)):
 	var bullet = Bullet.new(self)
 	bullet.target_position = target_pos
+	bullet.on_hit.connect(func(blt): emit_signal("on_hit", blt))
 	bullet.add_bullet(player.damage, player.position, true)

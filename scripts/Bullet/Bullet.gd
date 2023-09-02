@@ -7,6 +7,9 @@ var root: Node
 
 var ybullet = preload("res://assets/Bullets/Bullet Yellow.png")
 var bbullet = preload("res://assets/Bullets/Bullet Blue.png")
+
+signal on_hit
+
 func _init(node: Node):
 	root = node.get_node('/root/Main')
 	bullet = pre_bullet.instantiate()
@@ -26,6 +29,8 @@ func add_bullet(damage: float, position: Vector2, from_player: bool):
 	
 	# Prevent bullet to go above plane
 	dupe.z_index = -1
+	
+	dupe.on_hit.connect(func(blt): emit_signal("on_hit", blt))
 	
 	root.add_child(dupe)
 	dupe.name = bullet.name

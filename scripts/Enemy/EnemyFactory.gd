@@ -11,7 +11,7 @@ func _ready():
 	root = get_parent()
 	enemy = pre_enemy.instantiate()
 	# Add total enemy because ignoring the first enemy
-	for i in total_enemy + 1:	
+	for i in total_enemy + 1:
 		spawn_enemy()
 
 func is_odd() -> bool:

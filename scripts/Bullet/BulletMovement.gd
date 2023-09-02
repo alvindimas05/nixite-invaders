@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var from_player: bool
 @export var target_position: Vector2
 
+signal on_hit
+
 func _ready():
 	var area: Area2D = get_node("Area2D")
 	area.area_entered.connect(_area_entered)
@@ -27,5 +29,6 @@ func _area_entered(area: Area2D):
 	var parent = area.get_parent()
 	if area.name != "DamageHandler" or area.is_player == from_player: return
 	
+	emit_signal("on_hit", self)
 	area.send_damage(damage)
 	queue_free()

@@ -359,7 +359,6 @@ shape = SubResource("RectangleShape2D_yp5cg")
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_wno4r")
 volume_db = -1.0
-autoplay = true
 
 [node name="EnemyFactory" type="Node" parent="."]
 script = ExtResource("5_tb6ms")
@@ -501,9 +500,8 @@ theme_override_font_sizes/normal_font_size = 50
 [node name="Skill 2" type="Control" parent="UserInterface/Skills"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 4.0
 offset_top = -150.0
-offset_right = 44.0
+offset_right = 40.0
 offset_bottom = -110.0
 
 [node name="TextureRect" type="TextureRect" parent="UserInterface/Skills/Skill 2"]
@@ -515,6 +513,33 @@ offset_bottom = -45.0
 scale = Vector2(3, 3)
 
 [node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = -81.0
+offset_right = -80.0
+offset_bottom = -17.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 50
+
+[node name="Skill 3" type="Control" parent="UserInterface/Skills"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -300.0
+offset_right = 40.0
+offset_bottom = -260.0
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/Skills/Skill 3"]
+layout_mode = 0
+offset_left = -85.0
+offset_top = -85.0
+offset_right = -45.0
+offset_bottom = -45.0
+scale = Vector2(3, 3)
+
+[node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 3"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
