@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cp0iu145rv4hr"]
+[gd_scene load_steps=63 format=3 uid="uid://cp0iu145rv4hr"]
 
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
 [ext_resource type="Script" path="res://scripts/Player/Player.gd" id="3_0ix8s"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://do75n2xoiiuh3" path="res://assets/Joystick/Joystick.png" id="14_r4afy"]
 [ext_resource type="Script" path="res://scripts/UI/JoystickController.gd" id="15_23py8"]
 [ext_resource type="Texture2D" uid="uid://bvj8o1ticdkef" path="res://assets/Joystick/Joystick Tip.png" id="16_i2dmm"]
-[ext_resource type="Script" path="res://scripts/Skills/SkillTouchScreen.gd" id="18_qdwwr"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
@@ -475,7 +474,6 @@ offset_right = -5.0
 offset_bottom = -25.0
 grow_horizontal = 0
 grow_vertical = 0
-script = ExtResource("18_qdwwr")
 
 [node name="Skill 1" type="Control" parent="UserInterface/Skills"]
 anchors_preset = 0
@@ -491,7 +489,6 @@ offset_bottom = -45.0
 scale = Vector2(3, 3)
 
 [node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 1"]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -519,7 +516,6 @@ offset_bottom = -45.0
 scale = Vector2(3, 3)
 
 [node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 2"]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -547,7 +543,6 @@ offset_bottom = -45.0
 scale = Vector2(3, 3)
 
 [node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 3"]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

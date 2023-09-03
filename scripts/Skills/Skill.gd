@@ -26,6 +26,12 @@ func set_requirements():
 	get_skill_position()
 	set_texture()
 
+func set_texture_click(txr: TextureRect):
+	txr.gui_input.connect(func(e: InputEvent):
+		if not e is InputEventScreenTouch: return
+		run_skill()
+	)
+
 func run_skill():
 	if !can_skill: return
 	can_skill = false
@@ -45,6 +51,7 @@ func get_skill_position():
 		
 		if txr.texture == null and lbl.text == "":
 			skill_control = con
+			set_texture_click(txr)
 			return
 	assert(false, "ERROR: Can't add skill texture or key label on class " + get_class())
 
@@ -54,8 +61,10 @@ func set_texture():
 	c.texture = skill_texture
 
 func set_key_label(key: String):
+	if DisplayServer.is_touchscreen_available(): return
 	var t: RichTextLabel = skill_control.get_node("TextLabel")
 	t.text = key
+	t.show()
 
 # Set timer duration for reuse
 var timer_duration: Timer
