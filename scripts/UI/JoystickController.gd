@@ -46,6 +46,7 @@ func move_tip(norm: Vector2):
 
 # Move based on velocity
 func _process(delta):
+	if player == null: return
 	player.velocity = velo * 1.1
 	player.move_and_slide()
 

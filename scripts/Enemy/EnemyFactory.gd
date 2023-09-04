@@ -3,11 +3,15 @@ extends Node
 @export var total_enemy = 16
 @export var plane_spacing = 150.0
 @export var limit_per_column = 10
+@export var start_y = 500.0
+@export var move_speed = 50.0
 
 var pre_enemy = preload("res://objects/enemy.tscn")
 var enemy: CharacterBody2D
 var root: Node
 
+var planes = []
+var enemy_show: EnemyShow
 func _ready():
 	root = get_parent()
 	enemy = pre_enemy.instantiate()
@@ -15,6 +19,11 @@ func _ready():
 	for ttl in split_total():
 		for i in ttl + 1: spawn_enemy()
 		reset_spawn()
+	enemy_show = EnemyShow.new(root, planes, start_y, move_speed * 8)
+
+func _physics_process(delta):
+	if enemy_show.done: return
+	enemy_show.move(delta)
 
 var extra_y = 0
 func reset_spawn():
@@ -50,6 +59,6 @@ func spawn_enemy():
 		dupe.position.x *= -1
 		left_spawn += 1
 
-	root.call_deferred("add_child", dupe)
+	planes.append(dupe)
 	total_spawn += 1
 # <DONT TOUCH END>
