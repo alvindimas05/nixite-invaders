@@ -364,7 +364,6 @@ autoplay = true
 
 [node name="EnemyFactory" type="Node" parent="."]
 script = ExtResource("5_tb6ms")
-total_enemy = 10
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 offset = Vector2(-960, -540)

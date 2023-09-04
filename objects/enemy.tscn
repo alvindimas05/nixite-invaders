@@ -11,9 +11,8 @@ size = Vector2(120, 80)
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 5
 z_as_relative = false
-position = Vector2(0, -400)
+position = Vector2(0, -500)
 script = ExtResource("1_iei06")
-damage = 5.0
 
 [node name="DamageHandler" type="Area2D" parent="."]
 script = ExtResource("2_r6ppt")
