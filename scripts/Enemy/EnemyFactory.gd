@@ -15,14 +15,16 @@ var enemy_show: EnemyShow
 func _ready():
 	root = get_parent()
 	enemy = pre_enemy.instantiate()
-	# Add total enemy because ignoring the first enemy
+	spawn_enemies()
+
+func spawn_enemies():
 	for ttl in split_total():
 		for i in ttl + 1: spawn_enemy()
 		reset_spawn()
 	enemy_show = EnemyShow.new(root, planes, start_y, move_speed * 8)
 
 func _physics_process(delta):
-	if enemy_show.done: return
+	if enemy_show == null or enemy_show.done: return
 	enemy_show.move(delta)
 
 var extra_y = 0

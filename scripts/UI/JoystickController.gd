@@ -1,4 +1,4 @@
-extends Button
+extends AnimatedControl
 
 var player: PlaneStats
 var tip: TextureRect
@@ -8,6 +8,7 @@ var tip_pos: Vector2
 var limit: float
 var center: Vector2
 func _ready():
+	super()
 	disable_if_not_mobile()
 	player = get_node("/root/Main/Player")
 	tip = get_child(0)
@@ -15,6 +16,8 @@ func _ready():
 	
 	limit = (size.x / 2) - (tip.size.x / 4)
 	center = size / 4
+	
+	show_ui()
 	
 func disable_if_not_mobile():
 	if DisplayServer.is_touchscreen_available(): show()

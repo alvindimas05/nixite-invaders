@@ -1,8 +1,14 @@
-extends Button
+extends AnimatedControl
 
 func _ready():
-	if DisplayServer.is_touchscreen_available():show()
-	else: hide()
+	super()
+	if !DisplayServer.is_touchscreen_available():
+		hide()
+		return
+	show()
+	
+	position = _hide_position
+	show_ui()
 
 func _gui_input(event):
 	if event is InputEventScreenTouch:

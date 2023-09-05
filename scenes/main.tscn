@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cp0iu145rv4hr"]
+[gd_scene load_steps=66 format=3 uid="uid://cp0iu145rv4hr"]
 
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
 [ext_resource type="Script" path="res://scripts/Player/Player.gd" id="3_0ix8s"]
@@ -12,12 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://bgqsv3q508dw1" path="res://assets/HealthStatus/Player Health Status Good.png" id="10_7rjns"]
 [ext_resource type="Texture2D" uid="uid://dp1o7xjej845e" path="res://assets/HealthStatus/Player Health Status Critical.png" id="11_6o2t0"]
 [ext_resource type="Texture2D" uid="uid://dvj310q0k0i2c" path="res://assets/HealthStatus/Player Health Status Warning.png" id="11_dfmln"]
-[ext_resource type="Texture2D" uid="uid://calgmka26axy8" path="res://assets/Buttons/Fire Button.png" id="12_x7ah3"]
-[ext_resource type="Script" path="res://scripts/UI/FireButton.gd" id="13_2wmgb"]
 [ext_resource type="Texture2D" uid="uid://do75n2xoiiuh3" path="res://assets/Joystick/Joystick.png" id="14_r4afy"]
 [ext_resource type="Script" path="res://scripts/UI/JoystickController.gd" id="15_23py8"]
 [ext_resource type="Texture2D" uid="uid://bvj8o1ticdkef" path="res://assets/Joystick/Joystick Tip.png" id="16_i2dmm"]
 [ext_resource type="Script" path="res://scripts/Skills/SkillTouchScreen.gd" id="18_qdwwr"]
+[ext_resource type="Texture2D" uid="uid://dwvk7723h4rdq" path="res://assets/Dialogue/Dialogue Box.png" id="19_go5fi"]
+[ext_resource type="Texture2D" uid="uid://calgmka26axy8" path="res://assets/Buttons/Fire Button.png" id="19_kpqy8"]
+[ext_resource type="Script" path="res://scripts/UI/FireButton.gd" id="20_jsito"]
+[ext_resource type="Script" path="res://scripts/UI/DialogueBox.gd" id="20_u01k2"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
@@ -252,16 +254,6 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qix8l"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nds0d"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k01nn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ii8yu"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qbx76"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wva7m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kra1c"]
@@ -271,6 +263,16 @@ animations = [{
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhk13"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8h6bi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xxlvv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0vkl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n287b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oqg44"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sc7b7"]
 
 [node name="Main" type="Node2D"]
 
@@ -316,6 +318,8 @@ z_as_relative = false
 position = Vector2(0, 450)
 scale = Vector2(2, 2)
 script = ExtResource("3_0ix8s")
+max_health_points = 200.0
+health_points = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_dvws2")
@@ -380,6 +384,8 @@ offset_right = 201.0
 offset_bottom = -186.0
 grow_vertical = 0
 script = ExtResource("8_g1it2")
+hide_minus_mobile = Vector2(0, 100)
+hide_minus_position = Vector2(400, 0)
 
 [node name="Good" type="AnimatedSprite2D" parent="UserInterface/PlayerHealthStatus"]
 texture_filter = 1
@@ -405,32 +411,7 @@ sprite_frames = SubResource("SpriteFrames_ks411")
 autoplay = "default"
 frame_progress = 0.929472
 
-[node name="FireButton" type="Button" parent="UserInterface"]
-visible = false
-texture_filter = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -466.0
-offset_top = -359.0
-offset_right = -434.0
-offset_bottom = -327.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(7, 7)
-focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_qix8l")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_nds0d")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_k01nn")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ii8yu")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qbx76")
-icon = ExtResource("12_x7ah3")
-script = ExtResource("13_2wmgb")
-
 [node name="Joystick" type="Button" parent="UserInterface"]
-visible = false
 texture_filter = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -449,6 +430,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_mhk13")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6bi")
 icon = ExtResource("14_r4afy")
 script = ExtResource("15_23py8")
+hide_minus_position = Vector2(0, -700)
 
 [node name="Tip" type="TextureRect" parent="UserInterface/Joystick"]
 layout_mode = 0
@@ -459,7 +441,7 @@ offset_bottom = 48.0
 pivot_offset = Vector2(16, 16)
 texture = ExtResource("16_i2dmm")
 
-[node name="Skills" type="Control" parent="UserInterface"]
+[node name="SkillsDesktop" type="Control" parent="UserInterface"]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 3
@@ -467,20 +449,23 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -45.0
+offset_left = -65.0
 offset_top = -65.0
-offset_right = -5.0
+offset_right = -25.0
 offset_bottom = -25.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("18_qdwwr")
+hide_minus_mobile = Vector2(0, -700)
+hide_minus_position = Vector2(-200, 0)
+hide_on_default = false
 
-[node name="Skill 1" type="Control" parent="UserInterface/Skills"]
+[node name="Skill 1" type="Control" parent="UserInterface/SkillsDesktop"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface/Skills/Skill 1"]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/SkillsDesktop/Skill 1"]
 layout_mode = 0
 offset_left = -85.0
 offset_top = -85.0
@@ -488,7 +473,7 @@ offset_right = -45.0
 offset_bottom = -45.0
 scale = Vector2(3, 3)
 
-[node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 1"]
+[node name="TextLabel" type="RichTextLabel" parent="UserInterface/SkillsDesktop/Skill 1"]
 visible = false
 layout_mode = 1
 anchors_preset = 1
@@ -501,14 +486,14 @@ offset_bottom = -17.0
 grow_horizontal = 0
 theme_override_font_sizes/normal_font_size = 50
 
-[node name="Skill 2" type="Control" parent="UserInterface/Skills"]
+[node name="Skill 2" type="Control" parent="UserInterface/SkillsDesktop"]
 layout_mode = 3
 anchors_preset = 0
 offset_top = -150.0
 offset_right = 40.0
 offset_bottom = -110.0
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface/Skills/Skill 2"]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/SkillsDesktop/Skill 2"]
 layout_mode = 0
 offset_left = -85.0
 offset_top = -85.0
@@ -516,7 +501,7 @@ offset_right = -45.0
 offset_bottom = -45.0
 scale = Vector2(3, 3)
 
-[node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 2"]
+[node name="TextLabel" type="RichTextLabel" parent="UserInterface/SkillsDesktop/Skill 2"]
 visible = false
 layout_mode = 1
 anchors_preset = 1
@@ -529,14 +514,14 @@ offset_bottom = -17.0
 grow_horizontal = 0
 theme_override_font_sizes/normal_font_size = 50
 
-[node name="Skill 3" type="Control" parent="UserInterface/Skills"]
+[node name="Skill 3" type="Control" parent="UserInterface/SkillsDesktop"]
 layout_mode = 3
 anchors_preset = 0
 offset_top = -300.0
 offset_right = 40.0
 offset_bottom = -260.0
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface/Skills/Skill 3"]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/SkillsDesktop/Skill 3"]
 layout_mode = 0
 offset_left = -85.0
 offset_top = -85.0
@@ -544,7 +529,7 @@ offset_right = -45.0
 offset_bottom = -45.0
 scale = Vector2(3, 3)
 
-[node name="TextLabel" type="RichTextLabel" parent="UserInterface/Skills/Skill 3"]
+[node name="TextLabel" type="RichTextLabel" parent="UserInterface/SkillsDesktop/Skill 3"]
 visible = false
 layout_mode = 1
 anchors_preset = 1
@@ -556,3 +541,157 @@ offset_right = -80.0
 offset_bottom = -17.0
 grow_horizontal = 0
 theme_override_font_sizes/normal_font_size = 50
+
+[node name="SkillsMobile" type="Control" parent="UserInterface"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -516.0
+offset_top = -186.0
+offset_right = -476.0
+offset_bottom = -146.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("18_qdwwr")
+hide_minus_mobile = Vector2(0, -700)
+hide_minus_position = Vector2(-200, 0)
+hide_on_default = false
+
+[node name="Skill 1" type="Control" parent="UserInterface/SkillsMobile"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/SkillsMobile/Skill 1"]
+layout_mode = 0
+offset_left = -85.0
+offset_top = -85.0
+offset_right = -45.0
+offset_bottom = -45.0
+scale = Vector2(3, 3)
+
+[node name="TextLabel" type="RichTextLabel" parent="UserInterface/SkillsMobile/Skill 1"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = -81.0
+offset_right = -80.0
+offset_bottom = -17.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 50
+
+[node name="Skill 2" type="Control" parent="UserInterface/SkillsMobile"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -150.0
+offset_right = 40.0
+offset_bottom = -110.0
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/SkillsMobile/Skill 2"]
+layout_mode = 0
+offset_left = -85.0
+offset_top = -85.0
+offset_right = -45.0
+offset_bottom = -45.0
+scale = Vector2(3, 3)
+
+[node name="TextLabel" type="RichTextLabel" parent="UserInterface/SkillsMobile/Skill 2"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = -81.0
+offset_right = -80.0
+offset_bottom = -17.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 50
+
+[node name="Skill 3" type="Control" parent="UserInterface/SkillsMobile"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -300.0
+offset_right = 40.0
+offset_bottom = -260.0
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/SkillsMobile/Skill 3"]
+layout_mode = 0
+offset_left = -85.0
+offset_top = -85.0
+offset_right = -45.0
+offset_bottom = -45.0
+scale = Vector2(3, 3)
+
+[node name="TextLabel" type="RichTextLabel" parent="UserInterface/SkillsMobile/Skill 3"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = -81.0
+offset_right = -80.0
+offset_bottom = -17.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 50
+
+[node name="DialogueBox" type="TextureRect" parent="UserInterface"]
+visible = false
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -800.0
+offset_top = -430.0
+offset_right = 800.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("19_go5fi")
+script = ExtResource("20_u01k2")
+
+[node name="Panel" type="MarginContainer" parent="UserInterface/DialogueBox"]
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 400.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UserInterface/DialogueBox/Panel"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+
+[node name="FireButton" type="Button" parent="UserInterface"]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -474.0
+offset_top = -356.0
+offset_right = -442.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(6, 6)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xxlvv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d0vkl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_n287b")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oqg44")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sc7b7")
+icon = ExtResource("19_kpqy8")
+script = ExtResource("20_jsito")
+hide_minus_position = Vector2(0, -700)

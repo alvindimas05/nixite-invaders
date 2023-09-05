@@ -16,7 +16,10 @@ var skill_texture: CompressedTexture2D
 
 func _init(plr: PlaneStats):
 	player = plr
-	skills = plr.get_node("/root/Main/UserInterface/Skills")
+	var node_name = "/root/Main/UserInterface/Skills"
+	if DisplayServer.is_touchscreen_available(): node_name += "Mobile"
+	else: node_name += "Desktop"
+	skills = plr.get_node(node_name)
 	
 # Call after init on extend class
 func set_requirements():
