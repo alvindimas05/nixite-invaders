@@ -1,9 +1,12 @@
 extends PlaneStats
 
 @export var move_speed = 400.0
+@export var can_control = false
 
+var collision: CollisionShape2D
 var status_controller: PlayerHealthStatusController
 func _ready():
+	collision = get_node("CollisionShape2D")
 	status_controller = PlayerHealthStatusController.new(self)
 	on_health_points_change.connect(status_controller.on_change_health_points)
 	set_skills()
@@ -12,6 +15,8 @@ var skill_1: SkillTripleBullets
 var skill_2: SkillLongLaser
 var skill_3: SkillLaserBullet
 func _process(delta):
+	if !can_control: return
+	
 	if Input.is_key_pressed(KEY_J): skill_1.run_skill()
 	if Input.is_key_pressed(KEY_K): skill_2.run_skill()
 	if Input.is_key_pressed(KEY_L): skill_3.run_skill()
@@ -30,5 +35,7 @@ func get_input():
 	velocity = input * move_speed * 1.1
 
 func _physics_process(_delta):
+	if !can_control: return
+	
 	get_input()
 	move_and_slide()
