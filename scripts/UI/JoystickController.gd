@@ -17,8 +17,6 @@ func _ready():
 	limit = (size.x / 2) - (tip.size.x / 4)
 	center = size / 4
 	
-	show_ui()
-	
 func disable_if_not_mobile():
 	if DisplayServer.is_touchscreen_available(): show()
 	else: hide()

@@ -8,7 +8,6 @@ func _ready():
 	show()
 	
 	position = _hide_position
-	show_ui()
 
 func _gui_input(event):
 	if event is InputEventScreenTouch:

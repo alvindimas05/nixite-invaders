@@ -9,8 +9,6 @@ func _ready():
 	super()
 	is_mobile = DisplayServer.is_touchscreen_available()
 	if is_mobile: move_to_top()
-	
-	show_ui()
 
 func move_to_top():
 	anchors_preset = PRESET_CENTER_TOP
