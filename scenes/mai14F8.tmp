@@ -669,6 +669,7 @@ script = ExtResource("20_jsito")
 hide_minus_position = Vector2(0, -700)
 
 [node name="DialogueBox" type="TextureRect" parent="UserInterface"]
+visible = false
 texture_filter = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -683,7 +684,6 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("19_go5fi")
 script = ExtResource("20_u01k2")
-hide_minus_position = Vector2(0, -1000)
 
 [node name="Panel" type="MarginContainer" parent="UserInterface/DialogueBox"]
 layout_mode = 0
