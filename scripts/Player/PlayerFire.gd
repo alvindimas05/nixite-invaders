@@ -12,6 +12,7 @@ func _ready():
 	set_timer()
 
 func _process(_delta):
+	if !player.can_control: return
 	fire()
 
 var fire_timer = Timer.new()
