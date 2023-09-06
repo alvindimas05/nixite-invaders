@@ -1,6 +1,6 @@
 extends Node
 
-@export var total_enemy = 16
+@export var total_enemy = 0
 @export var plane_spacing = 150.0
 @export var limit_per_column = 10
 @export var start_y = 500.0
@@ -15,7 +15,6 @@ var enemy_show: EnemyShow
 func _ready():
 	root = get_parent()
 	enemy = pre_enemy.instantiate()
-	spawn_enemies()
 
 func spawn_enemies():
 	for ttl in split_total():
