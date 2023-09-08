@@ -16,7 +16,7 @@ func _ready():
 	
 	set_timer_dialog()
 	set_timer_clear_dialog()
-	start_dialogs("Nako", "default", ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus posuere vulputate."])
+#	start_dialogs("Nako", "default", ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus posuere vulputate."])
 
 func _process(delta):
 	if wait_for_move && !on_move && on_show:
@@ -47,11 +47,11 @@ func start_dialogs(character_name: String, potrait_type: String, dialogs: Array)
 	dialog_index = 0
 	
 	if wait_for_move: return
-	voice_effect.play()
+	voice_effect.play_voice(character_name)
 	set_text(dialogs[dialog_index])
 
 func continue_dialog():
-	voice_effect.play()
+	voice_effect.play_voice()
 	dialog_index += 1
 	set_text(dialogs[dialog_index])
 

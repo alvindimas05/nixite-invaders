@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://b7htix48fiqg8" path="res://assets/Potraits/Nako/default.png" id="23_wv6rm"]
 [ext_resource type="Script" path="res://scripts/UI/Dialogue/PotraitSprites.gd" id="24_3yi2u"]
 [ext_resource type="Texture2D" uid="uid://d6s4m8asvxh8" path="res://assets/Potraits/Nako/default_blinking.png" id="25_p435v"]
-[ext_resource type="AudioStream" uid="uid://b3355rn3horsq" path="res://sounds/voices/voice_nako.wav" id="26_qh880"]
+[ext_resource type="Script" path="res://scripts/UI/Dialogue/VoiceEffect.gd" id="26_rbmhu"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
@@ -778,5 +778,5 @@ script = ExtResource("24_3yi2u")
 sprite_frames = SubResource("SpriteFrames_4xk34")
 
 [node name="VoiceEffect" type="AudioStreamPlayer" parent="UserInterface/DialogueBox"]
-stream = ExtResource("26_qh880")
 volume_db = -10.0
+script = ExtResource("26_rbmhu")

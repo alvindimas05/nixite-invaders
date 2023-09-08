@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b3355rn3horsq"
-path="res://.godot/imported/voice_nako.wav-7cb99e44306ffc1091e09a437f67490f.sample"
+path="res://.godot/imported/Nako.wav-c5d7f675da466053c739ca438a87d7f4.sample"
 
 [deps]
 
-source_file="res://sounds/voices/voice_nako.wav"
-dest_files=["res://.godot/imported/voice_nako.wav-7cb99e44306ffc1091e09a437f67490f.sample"]
+source_file="res://sounds/voices/Nako.wav"
+dest_files=["res://.godot/imported/Nako.wav-c5d7f675da466053c739ca438a87d7f4.sample"]
 
 [params]
 
