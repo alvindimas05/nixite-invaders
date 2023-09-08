@@ -43,7 +43,7 @@ var sfx = preload("res://sounds/plane_destroyed.mp3")
 var sound_destroy = AudioStreamPlayer2D.new()
 func set_sound_destroy():
 	sound_destroy.stream = sfx
-	root.add_child(sound_destroy)
+	root.add_child.call_deferred(sound_destroy)
 
 # Effect when hit by bullet
 var timer = Timer.new()

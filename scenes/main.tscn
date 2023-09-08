@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cp0iu145rv4hr"]
+[gd_scene load_steps=79 format=3 uid="uid://cp0iu145rv4hr"]
 
 [ext_resource type="Script" path="res://scripts/Manager/MainManager.gd" id="1_g8pe0"]
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
@@ -20,7 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://dwvk7723h4rdq" path="res://assets/Dialogue/Dialogue Box.png" id="19_go5fi"]
 [ext_resource type="Texture2D" uid="uid://calgmka26axy8" path="res://assets/Buttons/Fire Button.png" id="19_kpqy8"]
 [ext_resource type="Script" path="res://scripts/UI/FireButton.gd" id="20_jsito"]
-[ext_resource type="Script" path="res://scripts/UI/DialogueBox.gd" id="20_u01k2"]
+[ext_resource type="Script" path="res://scripts/UI/Dialogue/DialogueBox.gd" id="21_fwkuq"]
+[ext_resource type="Script" path="res://scripts/UI/Dialogue/DialoguePotrait.gd" id="22_12drp"]
+[ext_resource type="Texture2D" uid="uid://b7htix48fiqg8" path="res://assets/Potraits/Nako/default.png" id="23_wv6rm"]
+[ext_resource type="Script" path="res://scripts/UI/Dialogue/PotraitSprites.gd" id="24_3yi2u"]
+[ext_resource type="Texture2D" uid="uid://d6s4m8asvxh8" path="res://assets/Potraits/Nako/default_blinking.png" id="25_p435v"]
+[ext_resource type="AudioStream" uid="uid://b3355rn3horsq" path="res://sounds/voices/voice_nako.wav" id="26_qh880"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
@@ -274,6 +279,61 @@ animations = [{
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oqg44"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sc7b7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srfdg"]
+atlas = ExtResource("23_wv6rm")
+region = Rect2(1, 1, 99, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy64y"]
+atlas = ExtResource("23_wv6rm")
+region = Rect2(101, 1, 99, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhalh"]
+atlas = ExtResource("25_p435v")
+region = Rect2(1, 1, 99, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxrpm"]
+atlas = ExtResource("25_p435v")
+region = Rect2(101, 1, 99, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbfcm"]
+atlas = ExtResource("25_p435v")
+region = Rect2(1, 101, 99, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsduh"]
+atlas = ExtResource("25_p435v")
+region = Rect2(101, 101, 99, 99)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xk34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srfdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy64y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhalh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxrpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbfcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsduh")
+}],
+"loop": true,
+"name": &"default_blink",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g8pe0")
@@ -682,18 +742,41 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("19_go5fi")
-script = ExtResource("20_u01k2")
+script = ExtResource("21_fwkuq")
 hide_minus_position = Vector2(0, -1000)
 
-[node name="Panel" type="MarginContainer" parent="UserInterface/DialogueBox"]
+[node name="TextPanel" type="MarginContainer" parent="UserInterface/DialogueBox"]
 layout_mode = 0
-offset_right = 1600.0
+offset_left = 330.0
+offset_right = 1530.0
 offset_bottom = 400.0
 theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
+theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_bottom = 80
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UserInterface/DialogueBox/Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="UserInterface/DialogueBox/TextPanel"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
+
+[node name="DialoguePotrait" type="TextureRect" parent="UserInterface/DialogueBox"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -161.0
+offset_right = 344.0
+offset_bottom = 164.0
+grow_vertical = 2
+pivot_offset = Vector2(1, 1)
+script = ExtResource("22_12drp")
+
+[node name="Nako" type="Node" parent="UserInterface/DialogueBox/DialoguePotrait"]
+script = ExtResource("24_3yi2u")
+sprite_frames = SubResource("SpriteFrames_4xk34")
+
+[node name="VoiceEffect" type="AudioStreamPlayer" parent="UserInterface/DialogueBox"]
+stream = ExtResource("26_qh880")
+volume_db = -10.0

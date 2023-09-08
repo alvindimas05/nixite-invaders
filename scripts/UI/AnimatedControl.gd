@@ -10,6 +10,9 @@ var _hide_position: Vector2
 var on_move = false
 var on_show: bool
 
+signal after_hide
+signal after_show
+
 func _ready():
 	reset_position()
 	on_show = !hide_on_default
@@ -30,11 +33,15 @@ func show_ui():
 
 var tween: Tween
 func _move_ui(ui_position: Vector2):
-	if tween.is_running(): tween.stop()
+	if tween != null && tween.is_running(): tween.stop()
 	
 	on_move = true
 	tween = get_tree().create_tween()
 	
 	tween.tween_property(self, "position", ui_position, animation_duration).set_trans(Tween.TRANS_BACK)
-	tween.tween_callback(func(): on_move = false)
+	tween.tween_callback(func():
+		on_move = false
+		if on_show: emit_signal("after_show")
+		else: emit_signal("after_hide")
+	)
 	tween.play()
