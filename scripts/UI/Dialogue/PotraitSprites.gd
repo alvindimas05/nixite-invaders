@@ -7,7 +7,7 @@ extends Node
 @export var delay_per_frame: float = .1
 
 var _name = "default"
-var _blink_name = "default_blink"
+var _blink_name = "default_blinking"
 
 var rect: TextureRect
 
