@@ -21,7 +21,7 @@ func _ready():
 func _process(delta):
 	if wait_for_move && !on_move && on_show:
 		wait_for_move = false
-		start_dialogs(character_name, potrait_type, dialogs)
+		start_dialogs(dialogs)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") && wait_for_input:
@@ -35,39 +35,61 @@ var wait_for_clear = false
 
 var character_name: String
 var potrait_type: String
-func start_dialogs(character_name: String, potrait_type: String, dialogs: Array):
-	self.character_name = character_name
-	self.potrait_type = potrait_type
+
+#var _next_character_name
+#var _next_potrait_type
+func start_dialogs(dialogs: Array):
+	self.dialogs = dialogs
+	dialog_index = 0
+	
+	set_dialog()
+	
 	if !on_show:
 		dialogue_potrait.reset_dialog(character_name, potrait_type)
 		show_ui()
 		wait_for_move = true
 	
-	self.dialogs = dialogs
-	dialog_index = 0
-	
 	if wait_for_move: return
 	voice_effect.play_voice(character_name)
-	set_text(dialogs[dialog_index])
+	
+	continue_dialog(true)
+#	set_text(dialogs[dialog_index]["dialog"])
 
-func continue_dialog():
-	voice_effect.play_voice()
-	dialog_index += 1
-	set_text(dialogs[dialog_index])
-
-var on_dialog = false
-var wait_for_input = false
-func set_text(txt: String):
+func set_dialog():
 	assert(!on_dialog, "ERROR: Trying to set dialog text while on dialog!")
+	
+	var dlg = dialogs[dialog_index]
+	character_name = dlg["character_name"]
+	potrait_type = dlg["potrait_type"]
+	dialog = dlg["dialog"]
+	
+func continue_dialog(is_first: bool = false):
+	if(!is_first): dialog_index += 1
+	set_dialog()
 	
 	show()
 	wait_for_input = false
-	dialog = txt
 	char_index = 0
 	
+	voice_effect.play_voice(character_name)
 	timer_dialog.start()
 	dialogue_potrait.start_dialog(character_name, potrait_type)
 	on_dialog = true
+#	set_text(dialogs[dialog_index]["dialog"])
+
+var on_dialog = false
+var wait_for_input = false
+#func set_text(txt: String):
+#	assert(!on_dialog, "ERROR: Trying to set dialog text while on dialog!")
+#
+#	show()
+#	wait_for_input = false
+#	dialog = txt
+#	char_index = 0
+#
+#	timer_dialog.start()
+#	dialogue_potrait.start_dialog(character_name, potrait_type)
+#	on_dialog = true
 
 var timer_dialog = Timer.new()
 func set_timer_dialog():
