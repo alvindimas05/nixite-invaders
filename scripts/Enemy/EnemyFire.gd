@@ -3,6 +3,7 @@ extends Node
 @export var random_range_duration = 3.0
 
 var enemy: CharacterBody2D
+var can_fire: bool
 func _ready():
 	enemy = get_parent()
 	set_timer()
@@ -24,6 +25,7 @@ func set_timer():
 # Random delay before timer started
 
 func add_bullet():
+	if !can_fire: return
 	var bullet = Bullet.new(self)
 	bullet.target_position = Vector2(enemy.position.x, 1000)
 	bullet.add_bullet(enemy.damage, enemy.position, false)
