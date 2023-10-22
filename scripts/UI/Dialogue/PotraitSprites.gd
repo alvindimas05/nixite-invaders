@@ -7,7 +7,7 @@ extends Node
 @export var delay_per_frame: float = .1
 
 var _name = "default"
-var _blink_name = "default_blinking"
+var _blink_name = "_blinking"
 
 var rect: TextureRect
 
@@ -29,7 +29,8 @@ func start(potrait_type: String):
 	_frame_name = potrait_type
 	_timer.start()
 
-func stop():
+func stop(potrait_type: String):
+	_frame_name = potrait_type
 	_timer.stop()
 	_reset_sprite()
 
@@ -37,15 +38,15 @@ func _reset_sprite():
 	rect.texture = sprite_frames.get_frame_texture(_frame_name, 0)
 
 func random_blink():
-	if !sprite_frames.has_animation(_blink_name): return
+	if !sprite_frames.has_animation(_frame_name + _blink_name): return
 	is_blinking = randf() <= blink_chance
-	if is_blinking: _frame_name = _blink_name
 
 var is_blinking: bool
 func _set_sprite():
-	rect.texture = sprite_frames.get_frame_texture(_frame_name, _index)
+	var frame_name = _frame_name + (_blink_name if is_blinking else "")
+	rect.texture = sprite_frames.get_frame_texture(frame_name, _index)
 	_index += 1
-	if _index >= sprite_frames.get_frame_count(_name):
+	if _index >= sprite_frames.get_frame_count(frame_name):
 		_index = 0
 		random_blink()
-		if !is_blinking: _frame_name = _name
+#		if !is_blinking: _frame_name = _name

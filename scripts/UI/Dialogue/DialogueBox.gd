@@ -2,6 +2,8 @@ extends AnimatedControl
 
 @export var delay_per_character = .02
 
+signal on_dialogs_done
+
 var text_label: RichTextLabel
 var dialog: String
 var dialogue_potrait: DialoguePotrait
@@ -25,7 +27,9 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") && wait_for_input:
-		if dialog_index == dialogs.size() - 1: hide_ui()
+		if dialog_index == dialogs.size() - 1: 
+			hide_ui()
+			emit_signal("on_dialogs_done")
 		else: timer_clear_dialog.start()
 
 var dialogs = []
@@ -43,9 +47,9 @@ func start_dialogs(dialogs: Array):
 	dialog_index = 0
 	
 	set_dialog()
+	dialogue_potrait.reset_dialog(character_name, potrait_type)
 	
 	if !on_show:
-		dialogue_potrait.reset_dialog(character_name, potrait_type)
 		show_ui()
 		wait_for_move = true
 	
@@ -66,6 +70,8 @@ func set_dialog():
 func continue_dialog(is_first: bool = false):
 	if(!is_first): dialog_index += 1
 	set_dialog()
+	
+	dialogue_potrait.reset_dialog(character_name, potrait_type)
 	
 	show()
 	wait_for_input = false
