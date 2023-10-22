@@ -1,0 +1,32 @@
+[
+	{
+		"character_name": "Nako",
+		"potrait_type": "scared",
+		"dialog": "Outpost?!"
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "scared",
+		"dialog": "Unidentifed fleet of spacecraft is inbound!"
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "scared",
+		"dialog": "Outpost?!"
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "scared",
+		"dialog": "Respond!"
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "worried",
+		"dialog": "Damn it!"
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "worried",
+		"dialog": "I guess I'm gonna do it by myself."
+	},
+]

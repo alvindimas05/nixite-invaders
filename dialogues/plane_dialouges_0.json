@@ -1,0 +1,52 @@
+[
+	{
+		"character_name": "Nako",
+		"potrait_type": "happy",
+		"dialog": "Finally, I'm now a full-fledged Space Pilot!"
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "default",
+		"dialog": "I can't wait to find out what my first assignment is"
+	},
+	{
+		"character_name": "Radio",
+		"potrait_type": "default",
+		"dialog": "Interplan-7, this is Outpost Alpha."
+	},
+	{
+		"character_name": "Radio",
+		"potrait_type": "default",
+		"dialog": "Your mission is to recover the remains of a comm satellite that may have crashed on the lunar surface."
+	},
+	{
+		"character_name": "Radio",
+		"potrait_type": "default",
+		"dialog": "There are unconfirmed reports of hostile spacecrafts orbiting the moon."
+	},
+	{
+		"character_name": "Radio",
+		"potrait_type": "default",
+		"dialog": "Your ship's debris impact countermeasures should provide adequate protection in case of an attack."
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "neutral",
+		"dialog": "Hold on a second..."
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "scared",
+		"dialog": "Hostiles? Attack?"
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "worried",
+		"dialog": "I think I need backup here"
+	},
+	{
+		"character_name": "Radio",
+		"potrait_type": "default",
+		"dialog": "We are sending reinforcement to your position as soon as possible. Godspeed."
+	}
+]
