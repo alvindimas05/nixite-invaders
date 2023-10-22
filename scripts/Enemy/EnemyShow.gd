@@ -18,7 +18,6 @@ func _init(root: Node, planes: Array, start_y: float, move_speed: float):
 
 func move(delta: float):
 	if position_y >= start_y && !done:
-		for plane in planes: plane.can_move = true
 		done = true
 	else:
 		position_y += move_speed * delta
