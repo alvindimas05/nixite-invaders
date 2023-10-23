@@ -12,6 +12,17 @@ var root: Node
 
 var planes = []
 var enemy_show: EnemyShow
+var can_move = false : set = _set_can_move
+var can_fire = false : set = _set_can_fire
+	
+func _set_can_move(val: bool):
+	for plane in planes: plane.can_move = val
+	can_move = val
+
+func _set_can_fire(val: bool):
+	for plane in planes: plane.can_fire = val
+	can_move = val
+
 func _ready():
 	root = get_parent()
 	enemy = pre_enemy.instantiate()

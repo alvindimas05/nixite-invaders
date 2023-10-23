@@ -27,7 +27,8 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") && wait_for_input:
-		if dialog_index == dialogs.size() - 1: 
+		wait_for_input = false
+		if dialog_index == dialogs.size() - 1:
 			hide_ui()
 			emit_signal("on_dialogs_done")
 		else: timer_clear_dialog.start()
