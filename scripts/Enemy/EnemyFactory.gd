@@ -6,22 +6,28 @@ extends Node
 @export var start_y = 500.0
 @export var move_speed = 50.0
 
+signal on_destroyed_all
+
 var pre_enemy = preload("res://objects/enemy.tscn")
 var enemy: CharacterBody2D
 var root: Node
 
-var planes = []
+var planes = [] : set = _set_planes
 var enemy_show: EnemyShow
 var can_move = false : set = _set_can_move
 var can_fire = false : set = _set_can_fire
-	
+
+func _set_planes(val: Array):
+	if val.size() <= 0: emit_signal("on_destroyed_all")
+	planes = val
+
 func _set_can_move(val: bool):
 	for plane in planes: plane.can_move = val
 	can_move = val
 
 func _set_can_fire(val: bool):
 	for plane in planes: plane.can_fire = val
-	can_move = val
+	can_fire = val
 
 func _ready():
 	root = get_parent()
@@ -62,6 +68,9 @@ var total_spawn = 1
 var left_spawn = 1
 func spawn_enemy():
 	var dupe: CharacterBody2D = enemy.duplicate()
+	dupe.enemy_factory = self
+	dupe.can_move = can_move
+	dupe.can_fire = can_fire
 
 	# THIS IS THE PART WHERE I DONT UNDERSTAND
 	dupe.position.x += plane_spacing * (total_spawn - left_spawn)

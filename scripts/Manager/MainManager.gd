@@ -1,13 +1,13 @@
 extends Node
 
-@export var plane_move_duration = 5
-@export var delay_before_dialog_0 = 3
+@export var plane_move_duration = 1
+@export var delay_before_dialog_0 = 1
 @export var delay_before_dialog_1 = 1
 
-@export var delay_before_spawn_enemies = 5
+@export var delay_before_spawn_enemies = 1
 @export var enemies_total = 10
 
-@export var plane_move_bottom_duration = 2
+@export var plane_move_bottom_duration = 1
 @export var plane_bottom_position = Vector2(0, 500)
 
 var player: PlaneStats
@@ -16,7 +16,6 @@ var dialogue: Control
 var enemy_factory: Node
 var background_music: AudioStreamPlayer2D
 
-var turn = -1
 func _ready():
 	player = get_node("Player")
 	user_interface = get_node("UserInterface")
@@ -24,8 +23,24 @@ func _ready():
 	enemy_factory = get_node("EnemyFactory")
 	background_music = get_node("BackgroundMusic")
 	
-	next_turn()
+	enemy_factory.on_destroyed_all.connect(func(): print("ALL PLANES DESTROYED"))
+	
+	start_without_cutscene()
+#	next_turn()
 
+func start_without_cutscene():
+#	background_music.play()
+	user_interface.show_all()
+	
+	enemy_factory.can_move = true
+	enemy_factory.can_fire = true
+	enemy_factory.total_enemy = 10
+	enemy_factory.spawn_enemies()
+	
+	player.can_control = true
+	player.position = Vector2.ZERO
+
+var turn = -1
 func next_turn():
 	turn += 1
 	match turn:

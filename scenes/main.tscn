@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cp0iu145rv4hr"]
+[gd_scene load_steps=99 format=3 uid="uid://cp0iu145rv4hr"]
 
 [ext_resource type="Script" path="res://scripts/Manager/MainManager.gd" id="1_g8pe0"]
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://c0hwducuq2jat" path="res://assets/Potraits/Nako/neutral.png" id="28_iyuwo"]
 [ext_resource type="Texture2D" uid="uid://cyctymevpwntn" path="res://assets/Potraits/Nako/scared.png" id="28_o23pp"]
 [ext_resource type="Texture2D" uid="uid://bsnbdvr8qgf0" path="res://assets/Potraits/Nako/worried.png" id="29_sl4rc"]
+[ext_resource type="Script" path="res://scripts/UI/Dialogue/FlyingDialogue.gd" id="33_ifqlm"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
@@ -909,3 +910,17 @@ delay_per_frame = 0.2
 [node name="VoiceEffect" type="AudioStreamPlayer" parent="UserInterface/DialogueBox"]
 volume_db = -10.0
 script = ExtResource("26_rbmhu")
+
+[node name="FlyingDialogue" type="RichTextLabel" parent="UserInterface"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -500.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 45
+script = ExtResource("33_ifqlm")

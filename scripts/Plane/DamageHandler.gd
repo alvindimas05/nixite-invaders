@@ -3,6 +3,8 @@ extends Area2D
 @export var effect_delay = .2
 @export var effect_color = Color(.7, .7, .7)
 
+signal on_destroyed
+
 var pre_explosion = preload("res://objects/plane_explosion.tscn")
 
 var parent: CharacterBody2D
@@ -27,6 +29,7 @@ func send_damage(damage: int):
 # Destroy parent if hp below or equals to 0
 func check_for_destroy():
 	if parent.health_points > 0: return
+	emit_signal("on_destroyed")
 	destroy_plane()
 
 func destroy_plane():
@@ -36,8 +39,8 @@ func destroy_plane():
 	root.add_child(dupe)
 	dupe.play()
 	
-	parent.queue_free()
 	sound_destroy.play()
+	parent.queue_free()
 
 var sfx = preload("res://sounds/plane_destroyed.mp3")
 var sound_destroy = AudioStreamPlayer2D.new()
