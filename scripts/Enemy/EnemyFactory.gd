@@ -18,8 +18,8 @@ var can_move = false : set = _set_can_move
 var can_fire = false : set = _set_can_fire
 
 func _set_planes(val: Array):
-	if val.size() <= 0: emit_signal("on_destroyed_all")
 	planes = val
+	if val.size() <= 0: emit_signal("on_destroyed_all")
 
 func _set_can_move(val: bool):
 	for plane in planes: plane.can_move = val
@@ -45,8 +45,8 @@ func _physics_process(delta):
 
 var extra_y = 0
 func reset_spawn():
-	total_spawn = 1
-	left_spawn = 1
+	total_spawn = 0
+	left_spawn = 0
 	extra_y += plane_spacing
 
 func split_total() -> Array:
@@ -57,15 +57,15 @@ func split_total() -> Array:
 		result.append(valueToAdd)
 		total -= valueToAdd
 	return result
-	
+		
 func is_odd() -> bool: return total_spawn % 2 == 0
 
 # Spawn enemy and add spacing between planes
 # DON'T TOUCH
 # I HAVE NO IDEA HOW IS THIS WORKS
 # <DONT TOUCH START>
-var total_spawn = 1
-var left_spawn = 1
+var total_spawn = 0
+var left_spawn = 0
 func spawn_enemy():
 	var dupe: CharacterBody2D = enemy.duplicate()
 	dupe.enemy_factory = self

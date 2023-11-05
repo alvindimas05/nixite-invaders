@@ -23,10 +23,14 @@ func _ready():
 	enemy_factory = get_node("EnemyFactory")
 	background_music = get_node("BackgroundMusic")
 	
-	enemy_factory.on_destroyed_all.connect(func(): print("ALL PLANES DESTROYED"))
+	enemy_factory.on_destroyed_all.connect(continue_round)
 	
 	start_without_cutscene()
 #	next_turn()
+
+func continue_round():
+	enemy_factory.total_enemy = 20
+	enemy_factory.spawn_enemies()
 
 func start_without_cutscene():
 #	background_music.play()
@@ -34,7 +38,7 @@ func start_without_cutscene():
 	
 	enemy_factory.can_move = true
 	enemy_factory.can_fire = true
-	enemy_factory.total_enemy = 10
+	enemy_factory.total_enemy = 8
 	enemy_factory.spawn_enemies()
 	
 	player.can_control = true

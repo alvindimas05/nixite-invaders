@@ -22,4 +22,5 @@ func move(delta: float):
 	else:
 		position_y += move_speed * delta
 		for plane in planes:
+			if plane == null: continue
 			plane.position.y += move_speed * delta
