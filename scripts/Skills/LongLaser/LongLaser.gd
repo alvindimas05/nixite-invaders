@@ -58,7 +58,7 @@ func send_damage_to_areas():
 # Send damage at first then add to areas
 var areas = []
 func _area_entered(area: Area2D):
-	if area.name != "DamageHandler" || is_player == area.is_player: return
+	if !activated || area.name != "DamageHandler" || is_player == area.is_player: return
 	area.send_damage(damage)
 	for ar in areas: if ar.get_instance_id() == area.get_instance_id(): return
 	areas.append(area)
