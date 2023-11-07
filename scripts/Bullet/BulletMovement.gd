@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var damage: int
+@export var damage: float
 
 @export var speed = 1500
 @export var can_move = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://cp0iu145rv4hr"]
+[gd_scene load_steps=103 format=3 uid="uid://cp0iu145rv4hr"]
 
 [ext_resource type="Script" path="res://scripts/Manager/MainManager.gd" id="1_g8pe0"]
 [ext_resource type="Script" path="res://scripts/Background/BackgroundMovement.gd" id="1_n6axb"]
@@ -33,6 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://cyctymevpwntn" path="res://assets/Potraits/Nako/scared.png" id="28_o23pp"]
 [ext_resource type="Texture2D" uid="uid://bsnbdvr8qgf0" path="res://assets/Potraits/Nako/worried.png" id="29_sl4rc"]
 [ext_resource type="Script" path="res://scripts/UI/Dialogue/FlyingDialogue.gd" id="33_ifqlm"]
+[ext_resource type="Script" path="res://scripts/Asteroid/Asteroid.gd" id="34_3q26c"]
+[ext_resource type="Texture2D" uid="uid://ds2ckvesch045" path="res://assets/Asteroid/Asteroid.png" id="35_g4m44"]
+[ext_resource type="Script" path="res://scripts/Asteroid/AsteroidHandler.gd" id="36_d2ns1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anq0w"]
 load_path = "res://.godot/imported/Galaxy Background.png-f7dc0a958eb703d5dbab1e9bed786401.ctex"
@@ -459,6 +462,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqspw"]
+size = Vector2(88, 97)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g8pe0")
 
@@ -506,9 +512,6 @@ scale = Vector2(2, 2)
 script = ExtResource("3_0ix8s")
 max_health_points = 200.0
 health_points = 200.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_dvws2")
 
 [node name="DamageHandler" type="Area2D" parent="Player"]
 script = ExtResource("4_jdrqb")
@@ -924,3 +927,31 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 45
 script = ExtResource("33_ifqlm")
+
+[node name="Asteroid" type="CharacterBody2D" parent="."]
+z_index = 5
+z_as_relative = false
+position = Vector2(0, -500)
+script = ExtResource("34_3q26c")
+max_health_points = 1.0
+health_points = 1.0
+damage = 150.0
+
+[node name="DamageHandler" type="Area2D" parent="Asteroid"]
+script = ExtResource("4_jdrqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid/DamageHandler"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_aqspw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Asteroid"]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("35_g4m44")
+
+[node name="AsteroidHandler" type="Area2D" parent="Asteroid"]
+script = ExtResource("36_d2ns1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid/AsteroidHandler"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_aqspw")

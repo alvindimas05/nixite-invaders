@@ -36,10 +36,10 @@ func start_without_cutscene():
 #	background_music.play()
 	user_interface.show_all()
 	
-	enemy_factory.can_move = true
-	enemy_factory.can_fire = true
-	enemy_factory.total_enemy = 8
-	enemy_factory.spawn_enemies()
+#	enemy_factory.can_move = true
+#	enemy_factory.can_fire = true
+#	enemy_factory.total_enemy = 8
+#	enemy_factory.spawn_enemies()
 	
 	player.can_control = true
 	player.position = Vector2.ZERO
