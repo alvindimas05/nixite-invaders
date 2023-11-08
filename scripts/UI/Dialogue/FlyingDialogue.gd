@@ -8,17 +8,6 @@ func _ready():
 	set_timer_dialog()
 	set_timer_clear_dialog()
 	set_timer_before_clear_dialog()
-	
-	start_dialogues([
-		{
-			"character_name": "Nako",
-			"dialog": "Lorem ipsum dolor sit amet"
-		},
-		{
-			"character_name": "Nako",
-			"dialog": "Sigmabatukam"
-		}
-	])
 
 func random_position():
 	var half_x = size.x / 2

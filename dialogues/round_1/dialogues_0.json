@@ -1,0 +1,27 @@
+[
+	{
+		"character_name": "Nako",
+		"potrait_type": "happy",
+		"dialog": "Finally, I'm now a full-fledged Space Pilot!"
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "default",
+		"dialog": "Heh, didn't know I would hop on this thing this early in my assignment"
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "default",
+		"dialog": "Alright, where were we..."
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "default",
+		"dialog": "Oh yeah, Controls."
+	},
+	{
+		"character_name": "Nako",
+		"potrait_type": "neutral",
+		"dialog": "Arrow keys or WASD to move.. SPACE to shoot.... Whatever that means."
+	}
+]

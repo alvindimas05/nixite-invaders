@@ -2,7 +2,7 @@ class_name AnimatedControl
 extends Control
 
 @export var hide_minus_position: Vector2
-@export var animation_duration = 1
+@export var animation_duration : float = 1
 @export var hide_on_default = true
 
 var _show_position: Vector2
