@@ -1,7 +1,9 @@
 extends RichTextLabel
 
-@export var delay_per_character = .04
-@export var delay_per_character_before_clear = .075
+@export var delay_per_character = .03
+@export var delay_per_character_before_clear = .05
+
+signal on_dialog_done
 
 var on_dialog = false
 func _ready():
@@ -66,6 +68,7 @@ func continue_dialog(is_first: bool = false):
 func end_dialogue():
 	char_index = 0
 	dialogue_index = 0
+	emit_signal("on_dialog_done")
 
 func clear_character():
 	char_index -= 5

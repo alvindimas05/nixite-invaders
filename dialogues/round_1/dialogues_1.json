@@ -1,14 +1,10 @@
 [
 	{
 		"character_name": "Nako",
-		"dialog": "That's so cool!"
+		"dialog": "Well, I hope I got it memorized!"
 	},
 	{
 		"character_name": "Nako",
-		"dialog": "Oh, an asteroid?"
-	},
-	{
-		"character_name": "Nako",
-		"dialog": "Maybe I can try shot at that asteroid"
+		"dialog": "Inbound meteors? Affirmative.\nBetter shoot those meteors."
 	}
 ]

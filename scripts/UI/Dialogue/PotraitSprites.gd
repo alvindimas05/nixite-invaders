@@ -38,13 +38,17 @@ func _reset_sprite():
 	rect.texture = sprite_frames.get_frame_texture(_frame_name, 0)
 
 func random_blink():
-	if !sprite_frames.has_animation(_frame_name + _blink_name): return
+	if !sprite_frames.has_animation(_frame_name + _blink_name):
+		is_blinking = false
+		return
 	is_blinking = randf() <= blink_chance
 
 var is_blinking: bool
 func _set_sprite():
 	var frame_name = _frame_name + (_blink_name if is_blinking else "")
-	rect.texture = sprite_frames.get_frame_texture(frame_name, _index)
+	var txr = sprite_frames.get_frame_texture(frame_name, _index)
+	print(txr)
+	rect.texture = txr
 	_index += 1
 	if _index >= sprite_frames.get_frame_count(frame_name):
 		_index = 0
